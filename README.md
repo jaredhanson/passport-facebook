@@ -3,6 +3,59 @@
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
 with Facebook using the OAuth 2.0 API.
 
+## Installation
+
+    $ npm install passport-facebook
+
+## Usage
+
+The Facebook authentication strategy authenticates users using a Facebook
+account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
+accepts these credentials and calls `done` providing a user, as well as
+`options` specifying a app ID, app secret, and callback URL.
+
+    passport.use(new FacebookStrategy({
+        clientID: FACEBOOK_APP_ID,
+        clientSecret: FACEBOOK_APP_SECRET,
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
+      },
+      function(accessToken, refreshToken, profile, done) {
+        User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+          return done(err, user);
+        });
+      }
+    ));
+
+#### Authenticate Requests
+
+Use `passport.authenticate()`, specifying the `'facebook'` strategy, to
+authenticate requests.
+
+For example, as route middleware in an [Express](http://expressjs.com/)
+application:
+
+    app.get('/auth/facebook',
+      passport.authenticate('facebook'),
+      function(req, res){
+        // The request will be redirected to Facebook for authentication, so
+        // this function will not be called.
+      });
+
+    app.get('/auth/facebook/callback', 
+      passport.authenticate('facebook', { failureRedirect: '/login' }),
+      function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+      });
+
+#### Examples
+
+For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
+
+## Credits
+
+  - [Jared Hanson](http://github.com/jaredhanson)
+
 ## License
 
 (The MIT License)
