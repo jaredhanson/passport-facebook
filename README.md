@@ -9,6 +9,8 @@ with Facebook using the OAuth 2.0 API.
 
 ## Usage
 
+#### Configure Strategy
+
 The Facebook authentication strategy authenticates users using a Facebook
 account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
