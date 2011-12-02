@@ -9,7 +9,7 @@
   },
   "main": "./lib/passport-facebook",
   "dependencies": {
-    "passport-oauth": ">= 0.1.0"
+    "passport-oauth": ">= 0.1.2"
   },
   "engines": { "node": ">= 0.4.0" },
   "keywords": ["passport", "facebook", "auth", "authn", "authentication", "identity"]
