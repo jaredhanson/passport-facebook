@@ -62,7 +62,7 @@ vows.describe('FacebookStrategy').addBatch({
         assert.equal(profile.name.givenName, 'Jared');
         assert.equal(profile.gender, 'male');
         assert.equal(profile.profileUrl, 'http://www.facebook.com/jaredhanson');
-        assert.length(profile.emails, 1);
+        assert.lengthOf(profile.emails, 1);
         assert.equal(profile.emails[0].value, 'jaredhanson@example.com');
       },
     },

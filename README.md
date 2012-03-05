@@ -1,7 +1,7 @@
 # Passport-Facebook
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with Facebook using the OAuth 2.0 API.
+with [Facebook](http://www.facebook.com/) using the OAuth 2.0 API.
 
 ## Installation
 
@@ -65,9 +65,16 @@ checkins:
         // extended permissions.
       });
 
-#### Examples
+## Examples
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
+
+## Tests
+
+    $ npm install --dev
+    $ make test
+
+[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-facebook.png)](http://travis-ci.org/jaredhanson/passport-facebook)
 
 ## Credits
 
