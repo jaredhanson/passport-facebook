@@ -15,7 +15,7 @@ vows.describe('FacebookStrategy').addBatch({
       function() {});
     },
     
-    'should be named twitter': function (strategy) {
+    'should be named facebook': function (strategy) {
       assert.equal(strategy.name, 'facebook');
     },
   },
