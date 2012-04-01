@@ -105,6 +105,9 @@ vows.describe('FacebookStrategy').addBatch({
       'should error' : function(err, req) {
         assert.isNotNull(err);
       },
+      'should wrap error in InternalOAuthError' : function(err, req) {
+        assert.equal(err.constructor.name, 'InternalOAuthError');
+      },
       'should not load profile' : function(err, profile) {
         assert.isUndefined(profile);
       },
