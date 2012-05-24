@@ -49,13 +49,13 @@ application:
         // this function will not be called.
       });
 
-    app.get('/auth/facebook/callback', 
+    app.get('/auth/facebook/callback',
       passport.authenticate('facebook', { failureRedirect: '/login' }),
       function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/');
       });
-      
+
 #### Extended Permissions
 
 If you need extended permissions from the user, the permissions can be requested
@@ -72,6 +72,10 @@ checkins:
       });
 
 ## Examples
+
+*NOTE*: There is a [current Facebook bug][1] that appends the hash `#_=_` to the callback URL's redirect.  Please use [this fix][2] in the meantime.
+[1]: https://developers.facebook.com/bugs/196125357123225
+[2]: https://github.com/jaredhanson/passport-facebook/issues/12#issuecomment-5913711
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
 
