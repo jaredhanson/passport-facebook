@@ -73,11 +73,18 @@ checkins:
 
 ## Examples
 
-*NOTE*: There is a [current Facebook bug][1] that appends the hash `#_=_` to the callback URL's redirect.  Please use [this fix][2] in the meantime.
+For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
+
+## Issues
+
+Facebook's OAuth 2.0 implementation has a [bug][1] in which the fragment `#_=_`
+is appended to the callback URL.  This appears to affect Firefox and Chrome, but
+not Safari.  This fragment can be removed via client-side JavaScript, and [@niftylettuce](https://github.com/niftylettuce)
+provides a suggested [workaround][2].  Developers are encouraged to direct their
+complaints to Facebook in an effort to get them to implement a proper fix for
+this issue.
 [1]: https://developers.facebook.com/bugs/196125357123225
 [2]: https://github.com/jaredhanson/passport-facebook/issues/12#issuecomment-5913711
-
-For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
 
 ## Tests
 
