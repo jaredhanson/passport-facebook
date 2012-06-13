@@ -1,6 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
+var urlLib = require('url');
 var FacebookStrategy = require('passport-facebook/strategy');
 
 
@@ -20,6 +21,64 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  'strategy when loading authorization url': {
+    topic: function () {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      });
+
+      return strategy;
+    },
+
+    'and display not set': {
+      topic: function (strategy) {
+        var mockRequest = {},
+            url;
+
+        // Stub strategy.redirect()
+        strategy.redirect = function (location) {
+          url = location;
+
+          return location;
+        };
+        strategy.authenticate(mockRequest);
+
+        return url;
+      },
+
+      'does not set authorization param': function(url) {
+        var params = urlLib.parse(url, true).query;
+
+        assert.isUndefined(params.display);
+      }
+    },
+
+    'and display set to mobile': {
+      topic: function (strategy) {
+        var mockRequest = {},
+            url;
+
+        // Stub strategy.redirect()
+        strategy.redirect = function (location) {
+          url = location;
+
+          return location;
+        };
+        strategy.authenticate(mockRequest, { display: 'mobile' });
+
+        return url;
+      },
+
+
+      'sets authorization param to mobile': function(url) {
+        var params = urlLib.parse(url, true).query;
+
+        assert.equal(params.display, 'mobile');
+      }
+    }
+  },
+
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new FacebookStrategy({
