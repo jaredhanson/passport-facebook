@@ -71,7 +71,7 @@ checkins:
         // extended permissions.
       });
 
-##### Display Mode
+#### Display Mode
 
 The display mode with which to render the authorization dialog can be set by
 specifying the `display` option.  Refer to Facebook's [OAuth Dialog](https://developers.facebook.com/docs/reference/dialogs/oauth/)
