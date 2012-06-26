@@ -56,19 +56,6 @@ application:
         res.redirect('/');
       });
 
-##### Display Mode
-
-Set `display` in `passport.authenticate()` options to specify display
-mode. Refer to the [OAuth dialog
-documentation](https://developers.facebook.com/docs/reference/dialogs/oauth/)
-for information on its usage. 
-
-    app.get('/auth/facebook',
-      passport.authenticate('facebook', { display: 'mobile' }),
-      function(req, res){
-        // ...
-      });
-
 #### Extended Permissions
 
 If you need extended permissions from the user, the permissions can be requested
@@ -82,6 +69,18 @@ checkins:
       function(req, res){
         // The request will be redirected to Facebook for authentication, with
         // extended permissions.
+      });
+
+##### Display Mode
+
+The display mode with which to render the authorization dialog can be set by
+specifying the `display` option.  Refer to Facebook's [OAuth Dialog](https://developers.facebook.com/docs/reference/dialogs/oauth/)
+documentation for more information.
+
+    app.get('/auth/facebook',
+      passport.authenticate('facebook', { display: 'touch' }),
+      function(req, res){
+        // ...
       });
 
 ## Examples
