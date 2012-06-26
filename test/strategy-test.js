@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var urlLib = require('url');
+var url = require('url');
 var FacebookStrategy = require('passport-facebook/strategy');
 
 
@@ -21,7 +21,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
-  'strategy when loading authorization url': {
+  'strategy when redirecting for authorization': {
     topic: function () {
       var strategy = new FacebookStrategy({
         clientID: 'ABC123',
@@ -37,19 +37,15 @@ vows.describe('FacebookStrategy').addBatch({
             url;
 
         // Stub strategy.redirect()
+        var self = this;
         strategy.redirect = function (location) {
-          url = location;
-
-          return location;
+          self.callback(null, location)
         };
         strategy.authenticate(mockRequest);
-
-        return url;
       },
 
-      'does not set authorization param': function(url) {
-        var params = urlLib.parse(url, true).query;
-
+      'does not set authorization param': function(err, location) {
+        var params = url.parse(location, true).query;
         assert.isUndefined(params.display);
       }
     },
@@ -60,20 +56,15 @@ vows.describe('FacebookStrategy').addBatch({
             url;
 
         // Stub strategy.redirect()
+        var self = this;
         strategy.redirect = function (location) {
-          url = location;
-
-          return location;
+          self.callback(null, location)
         };
         strategy.authenticate(mockRequest, { display: 'mobile' });
-
-        return url;
       },
 
-
-      'sets authorization param to mobile': function(url) {
-        var params = urlLib.parse(url, true).query;
-
+      'sets authorization param to mobile': function(err, location) {
+        var params = url.parse(location, true).query;
         assert.equal(params.display, 'mobile');
       }
     }
