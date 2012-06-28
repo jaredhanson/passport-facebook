@@ -185,7 +185,7 @@ vows.describe('FacebookStrategy').addBatch({
 
     'when converting field names to facebook api': {
       topic: function(strategy) {
-        this.callback(null, strategy._convertProfileFields());
+        this.callback(null, strategy._convertProfileFields(strategy.profileFields));
       },
 
       'should return a string of comma-separated field names': function(err, fields) {
