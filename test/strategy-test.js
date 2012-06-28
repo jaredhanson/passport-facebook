@@ -163,5 +163,64 @@ vows.describe('FacebookStrategy').addBatch({
       },
     },
   },
+
+  'strategy when configured to load specific profile fields': {
+    topic: function() {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        profileFields: ['id', 'photos']
+      },
+      function() {});
+
+      // mock
+      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+        var body = '{"id":"500308595","picture":"http://profile.ak.fbcdn.net/blahblahblah.jpg"}';
+
+        callback(null, body, undefined);
+      }
+
+      return strategy;
+    },
+
+    'when converting field names to facebook api': {
+      topic: function(strategy) {
+        this.callback(null, strategy._convertProfileFields());
+      },
+
+      'should return a string of comma-separated field names': function(err, fields) {
+        assert.equal(fields, 'id,picture');
+      }
+    },
+
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+
+      'should not error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should load specific fields': function(err, profile) {
+        assert.equal(profile.provider, 'facebook');
+        assert.equal(profile.id, '500308595');
+        assert.isUndefined(profile.username);
+        assert.isUndefined(profile.displayName);
+        assert.isUndefined(profile.name);
+        assert.isUndefined(profile.gender);
+        assert.isUndefined(profile.profileUrl);
+        assert.isUndefined(profile.emails);
+        assert.deepEqual(profile.photos, [{value: 'http://profile.ak.fbcdn.net/blahblahblah.jpg' }]);
+      }
+    }
+
+  },
   
 }).export(module);
