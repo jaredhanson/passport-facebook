@@ -2,7 +2,7 @@
   "name": "passport-facebook-examples-login",
   "version": "0.0.0",
   "dependencies": {
-    "express": ">= 0.0.0",
+    "express": "3.x",
     "ejs": ">= 0.0.0",
     "passport": ">= 0.0.0",
     "passport-facebook": ">= 0.0.0"

@@ -48,7 +48,7 @@ passport.use(new FacebookStrategy({
 
 
 
-var app = express.createServer();
+var app = express();
 
 // configure Express
 app.configure(function() {
