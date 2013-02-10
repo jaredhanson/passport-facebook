@@ -128,6 +128,57 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  'strategy when loading user profile with profileURL option': {
+    topic: function() {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        profileURL: 'https://graph.facebook.com/me?fields=id,username'
+      },
+      function() {});
+      
+      // mock
+      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+        if (url == 'https://graph.facebook.com/me?fields=id,username') {
+          var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL: ' + url));
+        }
+      }
+      
+      return strategy;
+    },
+    
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+        
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+      
+      'should not error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should load profile' : function(err, profile) {
+        assert.equal(profile.provider, 'facebook');
+        assert.equal(profile.id, '500308595');
+        assert.equal(profile.username, 'jaredhanson');
+      },
+      'should set raw property' : function(err, profile) {
+        assert.isString(profile._raw);
+      },
+      'should set json property' : function(err, profile) {
+        assert.isObject(profile._json);
+      },
+    },
+  },
+  
   'strategy when loading user profile with mapped profile fields': {
     topic: function() {
       var strategy = new FacebookStrategy({
