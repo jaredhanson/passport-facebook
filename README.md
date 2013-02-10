@@ -83,6 +83,25 @@ documentation for more information.
         // ...
       });
 
+#### Profile Fields
+
+The Facebook profile is very rich, and may contain a lot of information.  The
+strategy can be configured with a `profileFields` parameter which specifies a
+list of fields (named by Portable Contacts convention) your application needs.
+For example, to fetch only user's facebook ID, name, and picture, configure
+strategy like this.
+
+    passport.use(new FacebookStrategy({
+        // clientID, clientSecret and callbackURL
+        profileFields: ['id', 'displayName', 'photos']
+      },
+      // verify callback
+    ));
+
+The `profile` object of verify callback will only include listed fields. If
+`profileFields` are not specified, strategy will fill the `profile` object
+with fields that facebook returns by default.
+
 ## Examples
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
