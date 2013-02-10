@@ -80,9 +80,12 @@ vows.describe('FacebookStrategy').addBatch({
       
       // mock
       strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
-        var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
-        
-        callback(null, body, undefined);
+        if (url == 'https://graph.facebook.com/me') {
+          var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL'));
+        }
       }
       
       return strategy;
@@ -114,6 +117,158 @@ vows.describe('FacebookStrategy').addBatch({
         assert.equal(profile.profileUrl, 'http://www.facebook.com/jaredhanson');
         assert.lengthOf(profile.emails, 1);
         assert.equal(profile.emails[0].value, 'jaredhanson@example.com');
+        assert.isUndefined(profile.photos);
+      },
+      'should set raw property' : function(err, profile) {
+        assert.isString(profile._raw);
+      },
+      'should set json property' : function(err, profile) {
+        assert.isObject(profile._json);
+      },
+    },
+  },
+  
+  'strategy when loading user profile with mapped profile fields': {
+    topic: function() {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        profileFields: ['id', 'username', 'displayName', 'name', 'gender', 'profileUrl', 'emails', 'photos']
+      },
+      function() {});
+      
+      // mock
+      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+        if (url == 'https://graph.facebook.com/me?fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture') {
+          var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL: ' + url));
+        }
+      }
+      
+      return strategy;
+    },
+    
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+        
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+      
+      'should not error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should load profile' : function(err, profile) {
+        assert.equal(profile.provider, 'facebook');
+        assert.equal(profile.id, '500308595');
+        assert.equal(profile.username, 'jaredhanson');
+      },
+      'should set raw property' : function(err, profile) {
+        assert.isString(profile._raw);
+      },
+      'should set json property' : function(err, profile) {
+        assert.isObject(profile._json);
+      },
+    },
+  },
+  
+  'strategy when loading user profile with id and photos': {
+    topic: function() {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        profileFields: ['id', 'photos']
+      },
+      function() {});
+      
+      // mock
+      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+        if (url == 'https://graph.facebook.com/me?fields=id,picture') {
+          var body = '{"id":"500308595","picture":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-prn1\/example.jpg"}';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL: ' + url));
+        }
+      }
+      
+      return strategy;
+    },
+    
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+        
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+      
+      'should not error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should load profile' : function(err, profile) {
+        assert.equal(profile.provider, 'facebook');
+        assert.equal(profile.photos[0].value, 'http://profile.ak.fbcdn.net/hprofile-ak-prn1/example.jpg');
+      },
+      'should set raw property' : function(err, profile) {
+        assert.isString(profile._raw);
+      },
+      'should set json property' : function(err, profile) {
+        assert.isObject(profile._json);
+      },
+    },
+  },
+  
+  'strategy when loading user profile with id and photos using October 2012 Breaking Changes': {
+    topic: function() {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        profileFields: ['id', 'photos']
+      },
+      function() {});
+      
+      // mock
+      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+        if (url == 'https://graph.facebook.com/me?fields=id,picture') {
+          var body = '{"id":"500308595","picture":{"data":{"url":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-prn1\/example.jpg","is_silhouette":false}}}';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL: ' + url));
+        }
+      }
+      
+      return strategy;
+    },
+    
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+        
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+      
+      'should not error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should load profile' : function(err, profile) {
+        assert.equal(profile.provider, 'facebook');
+        assert.equal(profile.photos[0].value, 'http://profile.ak.fbcdn.net/hprofile-ak-prn1/example.jpg');
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
@@ -162,65 +317,6 @@ vows.describe('FacebookStrategy').addBatch({
         assert.isUndefined(profile);
       },
     },
-  },
-
-  'strategy when configured to load specific profile fields': {
-    topic: function() {
-      var strategy = new FacebookStrategy({
-        clientID: 'ABC123',
-        clientSecret: 'secret',
-        profileFields: ['id', 'photos']
-      },
-      function() {});
-
-      // mock
-      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
-        var body = '{"id":"500308595","picture":"http://profile.ak.fbcdn.net/blahblahblah.jpg"}';
-
-        callback(null, body, undefined);
-      }
-
-      return strategy;
-    },
-
-    'when converting field names to facebook api': {
-      topic: function(strategy) {
-        this.callback(null, strategy._convertProfileFields(strategy.profileFields));
-      },
-
-      'should return a string of comma-separated field names': function(err, fields) {
-        assert.equal(fields, 'id,picture');
-      }
-    },
-
-    'when told to load user profile': {
-      topic: function(strategy) {
-        var self = this;
-        function done(err, profile) {
-          self.callback(err, profile);
-        }
-
-        process.nextTick(function () {
-          strategy.userProfile('access-token', done);
-        });
-      },
-
-      'should not error' : function(err, req) {
-        assert.isNull(err);
-      },
-      'should load specific fields': function(err, profile) {
-        assert.equal(profile.provider, 'facebook');
-        assert.equal(profile.id, '500308595');
-        assert.isUndefined(profile.username);
-        assert.isUndefined(profile.displayName);
-        assert.isUndefined(profile.name);
-        assert.isUndefined(profile.gender);
-        assert.isUndefined(profile.profileUrl);
-        assert.isUndefined(profile.emails);
-        assert.deepEqual(profile.photos, [{value: 'http://profile.ak.fbcdn.net/blahblahblah.jpg' }]);
-      }
-    }
-
   },
   
 }).export(module);
