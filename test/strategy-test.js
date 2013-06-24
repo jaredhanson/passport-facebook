@@ -369,5 +369,39 @@ vows.describe('FacebookStrategy').addBatch({
       },
     },
   },
+
+  'strategy when sending back an error_code': {
+    topic: function() {
+      var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      },
+      function() {});
+      
+      return strategy;
+    },
+    
+    'when error_code has value': {
+      topic: function(strategy) {
+        var self = this;
+        strategy.fail = function(info) {
+          self.callback(null, info);
+        }
+
+        process.nextTick(function () {
+          strategy.authenticate({ query: { error_code: 902, error_message: 'failure' }});
+        });
+      },
+
+      'should fail authentication' : function(err, info) {
+        // fail action was called, resulting in test callback
+        assert.isNull(err);
+      },
+      'should pass additional info' : function(err, info) {
+        assert.equal(info.message, 'failure');
+        assert.equal(info.code, 902);
+      },
+    },
+  },
   
 }).export(module);
