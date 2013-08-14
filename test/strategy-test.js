@@ -26,7 +26,7 @@ vows.describe('FacebookStrategy').addBatch({
       var strategy = new FacebookStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
-      });
+      }, function(){});
 
       return strategy;
     },
