@@ -377,6 +377,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
 
+  // OK
   'strategy when sending back an error_code': {
     topic: function() {
       var strategy = new FacebookStrategy({
