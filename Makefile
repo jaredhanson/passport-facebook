@@ -1,9 +1,9 @@
-SOURCES = lib/**/*.js
-TESTS ?= test/*-test.js
+SOURCES = lib/*.js
+TESTS ?= test/*.test.js
 
 lint: lint-jshint
-test: test-vows
-test-cov: test-istanbul-vows
+test: test-mocha
+test-cov: test-istanbul-mocha
 view-cov: view-istanbul-report
 
 

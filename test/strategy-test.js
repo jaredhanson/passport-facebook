@@ -7,6 +7,7 @@ var FacebookStrategy = require('../lib/strategy');
 
 vows.describe('FacebookStrategy').addBatch({
   
+  // OK
   'strategy': {
     topic: function() {
       return new FacebookStrategy({
@@ -70,6 +71,7 @@ vows.describe('FacebookStrategy').addBatch({
     }
   },
 
+  // OK
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new FacebookStrategy({
@@ -128,6 +130,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile with profileURL option': {
     topic: function() {
       var strategy = new FacebookStrategy({
@@ -179,6 +182,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile with mapped profile fields': {
     topic: function() {
       var strategy = new FacebookStrategy({
@@ -330,6 +334,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile and encountering an error': {
     topic: function() {
       var strategy = new FacebookStrategy({

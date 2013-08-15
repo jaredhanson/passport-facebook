@@ -33,7 +33,9 @@
     "passport-oauth2": "1.0.0"
   },
   "devDependencies": {
-    "vows": "0.6.x"
+    "vows": "0.6.x",
+    "mocha": "1.x.x",
+    "chai": "1.x.x"
   },
   "engines": { "node": ">= 0.4.0" },
   "scripts": {
