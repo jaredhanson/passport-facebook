@@ -1,5 +1,10 @@
 # Passport-Facebook
 
+[![Build](https://travis-ci.org/jaredhanson/passport-facebook.png)](http://travis-ci.org/jaredhanson/passport-facebook)
+[![Coverage](https://coveralls.io/repos/jaredhanson/passport-facebook/badge.png)](https://coveralls.io/r/jaredhanson/passport-facebook)
+[![Dependencies](https://david-dm.org/jaredhanson/passport-facebook.png)](http://david-dm.org/jaredhanson/passport-facebook)
+
+
 [Passport](http://passportjs.org/) strategy for authenticating with [Facebook](http://www.facebook.com/)
 using the OAuth 2.0 API.
 
@@ -107,10 +112,8 @@ this issue.
 
 ## Tests
 
-    $ npm install --dev
-    $ make test
-
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-facebook.png)](http://travis-ci.org/jaredhanson/passport-facebook)
+    $ npm install
+    $ npm test
 
 ## Credits
 
