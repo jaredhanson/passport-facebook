@@ -1,4 +1,4 @@
-# Passport-Facebook
+# passport-facebook
 
 [![Build](https://travis-ci.org/jaredhanson/passport-facebook.png)](http://travis-ci.org/jaredhanson/passport-facebook)
 [![Coverage](https://coveralls.io/repos/jaredhanson/passport-facebook/badge.png)](https://coveralls.io/r/jaredhanson/passport-facebook)
