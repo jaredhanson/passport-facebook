@@ -2,7 +2,7 @@ var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
 var url = require('url');
-var FacebookStrategy = require('../lib/passport-facebook/strategy');
+var FacebookStrategy = require('../lib/strategy');
 
 
 vows.describe('FacebookStrategy').addBatch({

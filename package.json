@@ -2,7 +2,14 @@
   "name": "passport-facebook",
   "version": "0.1.6",
   "description": "Facebook authentication strategy for Passport.",
-  "keywords": ["passport", "facebook", "auth", "authn", "authentication", "identity"],
+  "keywords": [
+    "passport",
+    "facebook",
+    "auth",
+    "authn",
+    "authentication",
+    "identity"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/jaredhanson/passport-facebook.git"
@@ -15,11 +22,13 @@
     "email": "jaredhanson@gmail.com",
     "url": "http://www.jaredhanson.net/"
   },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT" 
-  } ],
-  "main": "./lib/passport-facebook",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./lib",
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport-oauth": "~0.1.2"
@@ -27,8 +36,8 @@
   "devDependencies": {
     "vows": "0.6.x"
   },
+  "engines": { "node": ">= 0.4.0" },
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
-  },
-  "engines": { "node": ">= 0.4.0" }
+  }
 }
