@@ -22,6 +22,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when redirecting for authorization': {
     topic: function () {
       var strategy = new FacebookStrategy({
