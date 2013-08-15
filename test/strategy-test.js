@@ -234,6 +234,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile with id and photos': {
     topic: function() {
       var strategy = new FacebookStrategy({
@@ -284,6 +285,7 @@ vows.describe('FacebookStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile with id and photos using October 2012 Breaking Changes': {
     topic: function() {
       var strategy = new FacebookStrategy({

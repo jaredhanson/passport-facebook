@@ -10,7 +10,7 @@ describe('Strategy#userProfile', function() {
     function() {});
   
     // mock
-    strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+    strategy._oauth2.get = function(url, accessToken, callback) {
       if (url != 'https://graph.facebook.com/me') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
       

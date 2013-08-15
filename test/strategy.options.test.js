@@ -12,7 +12,7 @@ describe('Strategy#userProfile', function() {
       function() {});
   
       // mock
-      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+      strategy._oauth2.get = function(url, accessToken, callback) {
         if (url != 'https://graph.facebook.com/me?fields=id,username') { return callback(new Error('incorrect url argument')); }
         if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
       
@@ -48,7 +48,7 @@ describe('Strategy#userProfile', function() {
       function() {});
   
       // mock
-      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+      strategy._oauth2.get = function(url, accessToken, callback) {
         if (url != 'https://graph.facebook.com/me?fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture') { return callback(new Error('incorrect url argument')); }
         if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
       
