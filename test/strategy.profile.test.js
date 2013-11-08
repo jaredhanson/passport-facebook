@@ -11,8 +11,7 @@ describe('Strategy#userProfile', function() {
   
     // mock
     strategy._oauth2.get = function(url, accessToken, callback) {
-      var expected = 'https://graph.facebook.com/me?&appsecret_proof=e941110e3d2bfe82621f0e3e1434730d7305d106c5f68c87165d0b27a4611a4a';
-      if (url != expected) { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/me') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
       
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
