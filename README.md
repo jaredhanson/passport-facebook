@@ -110,6 +110,11 @@ this issue.
 [1]: https://developers.facebook.com/bugs/196125357123225
 [2]: https://github.com/jaredhanson/passport-facebook/issues/12#issuecomment-5913711
 
+## Related Modules
+
+- [passport-facebook-canvas](https://github.com/missinglink/passport-facebook-canvas) — authentication for apps on Facebook Canvas
+- [passport-facebook-token](https://github.com/drudge/passport-facebook-token) — authenticate tokens issued to iOS, Android, etc.
+
 ## Tests
 
     $ npm install
