@@ -113,7 +113,7 @@ this issue.
 ## Related Modules
 
 - [passport-facebook-canvas](https://github.com/missinglink/passport-facebook-canvas) — authentication for apps on Facebook Canvas
-- [passport-facebook-token](https://github.com/drudge/passport-facebook-token) — authenticate tokens issued to iOS, Android, etc.
+- [passport-facebook-token](https://github.com/drudge/passport-facebook-token) — authenticate tokens issued to devices (iOS, Android, etc.)
 
 ## Tests
 
