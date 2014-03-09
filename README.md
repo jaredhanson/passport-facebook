@@ -1,9 +1,10 @@
 # passport-facebook
 
-[![Build](https://travis-ci.org/jaredhanson/passport-facebook.png)](http://travis-ci.org/jaredhanson/passport-facebook)
+[![Build](https://travis-ci.org/jaredhanson/passport-facebook.png)](https://travis-ci.org/jaredhanson/passport-facebook)
 [![Coverage](https://coveralls.io/repos/jaredhanson/passport-facebook/badge.png)](https://coveralls.io/r/jaredhanson/passport-facebook)
-[![Dependencies](https://david-dm.org/jaredhanson/passport-facebook.png)](http://david-dm.org/jaredhanson/passport-facebook)
-
+[![Quality](https://codeclimate.com/github/jaredhanson/passport-facebook.png)](https://codeclimate.com/github/jaredhanson/passport-facebook)
+[![Dependencies](https://david-dm.org/jaredhanson/passport-facebook.png)](https://david-dm.org/jaredhanson/passport-facebook)
+[![Tips](http://img.shields.io/gittip/jaredhanson.png)](https://www.gittip.com/jaredhanson/)
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Facebook](http://www.facebook.com/)
 using the OAuth 2.0 API.
@@ -128,4 +129,4 @@ this issue.
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2013 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2014 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
