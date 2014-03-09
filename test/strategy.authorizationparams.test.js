@@ -17,7 +17,7 @@ describe('Strategy', function() {
     var url;
   
     before(function(done) {
-      chai.passport(strategy)
+      chai.passport.use(strategy)
         .redirect(function(u) {
           url = u;
           done();
@@ -36,7 +36,7 @@ describe('Strategy', function() {
     var url;
   
     before(function(done) {
-      chai.passport(strategy)
+      chai.passport.use(strategy)
         .redirect(function(u) {
           url = u;
           done();
