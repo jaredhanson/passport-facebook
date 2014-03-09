@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var FacebookStrategy = require('../lib/strategy');
 
 
@@ -10,15 +13,15 @@ describe('Strategy#userProfile', function() {
       },
       function() {});
   
-      // mock
-      strategy._oauth2.get = function(url, accessToken, callback) {
-        if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
-        if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-      
-        var body = '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}';
+    // mock
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
+      if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
     
-        callback({ statusCode: 401, data: body });
-      }
+      var body = '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}';
+  
+      callback({ statusCode: 401, data: body });
+    };
       
     var err, profile;
     before(function(done) {
@@ -45,15 +48,15 @@ describe('Strategy#userProfile', function() {
       },
       function() {});
   
-      // mock
-      strategy._oauth2.get = function(url, accessToken, callback) {
-        if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
-        if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-      
-        var body = '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}';
+    // mock
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
+      if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
     
-        callback({ statusCode: 401, x__data: body });
-      }
+      var body = '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}';
+  
+      callback({ statusCode: 401, x__data: body });
+    };
       
     var err, profile;
     before(function(done) {
@@ -78,14 +81,14 @@ describe('Strategy#userProfile', function() {
       },
       function() {});
   
-      // mock
-      strategy._oauth2.get = function(url, accessToken, callback) {
-        if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
-        if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-      
-        var body = 'Hello, world.';
-        callback(null, body, undefined);
-      }
+    // mock
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
+      if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
+    
+      var body = 'Hello, world.';
+      callback(null, body, undefined);
+    };
       
     var err, profile;
     before(function(done) {

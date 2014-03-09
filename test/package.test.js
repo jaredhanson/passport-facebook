@@ -1,3 +1,5 @@
+/* global describe, it, expect */
+
 var strategy = require('..');
 
 describe('passport-facebook', function() {

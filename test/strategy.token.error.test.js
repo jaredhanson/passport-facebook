@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , FacebookStrategy = require('../lib/strategy');
 
@@ -14,7 +17,7 @@ describe('Strategy', function() {
     // inject a "mock" oauth2 instance
     strategy._oauth2.getOAuthAccessToken = function(code, options, callback) {
       return callback({ statusCode: 400, data: '{"error":{"message":"Invalid verification code format.","type":"OAuthException","code":100}}' });
-    }
+    };
   
     describe('handling response', function() {
       var err;
@@ -51,7 +54,7 @@ describe('Strategy', function() {
     // inject a "mock" oauth2 instance
     strategy._oauth2.getOAuthAccessToken = function(code, options, callback) {
       return callback({ statusCode: 400, data: '{"error":"invalid_grant","error_description":"The provided value for the input parameter \'code\' is not valid."} '});
-    }
+    };
   
     describe('handling response', function() {
       var err;

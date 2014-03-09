@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , FacebookStrategy = require('../lib/strategy');
 
@@ -25,7 +28,7 @@ describe('Strategy', function() {
     });
   
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/dialog/oauth?display=mobile&response_type=code&redirect_uri=&client_id=ABC123&type=web_server');
+      expect(url).to.equal('https://www.facebook.com/dialog/oauth?display=mobile&response_type=code&redirect_uri=&client_id=ABC123');
     });
   });
   
@@ -44,7 +47,7 @@ describe('Strategy', function() {
     });
   
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&redirect_uri=&client_id=ABC123&type=web_server');
+      expect(url).to.equal('https://www.facebook.com/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&redirect_uri=&client_id=ABC123');
     });
   });
   
