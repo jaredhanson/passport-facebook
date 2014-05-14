@@ -3,6 +3,13 @@ var express = require('express')
   , util = require('util')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
+var path = require('path');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+
 var FACEBOOK_APP_ID = "--insert-facebook-app-id-here--"
 var FACEBOOK_APP_SECRET = "--insert-facebook-app-secret-here--";
 
@@ -51,22 +58,19 @@ passport.use(new FacebookStrategy({
 var app = express();
 
 // configure Express
-app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(logger());
+  app.use(cookieParser());
+  app.use(bodyParser());
+  app.use(methodOverride());
+  app.use(session({ secret: 'keyboard cat' }));
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(app.router);
+  // app.use(app.router);
   app.use(express.static(__dirname + '/public'));
-});
-
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
