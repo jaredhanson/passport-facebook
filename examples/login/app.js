@@ -10,9 +10,6 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session');
 
-var FACEBOOK_APP_ID = "1428911074031766"
-var FACEBOOK_APP_SECRET = "36a956725f0457d574ae81ab536b8fcd";
-
 var FACEBOOK_APP_ID = "--insert-facebook-app-id-here--"
 var FACEBOOK_APP_SECRET = "--insert-facebook-app-secret-here--";
 
