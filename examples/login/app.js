@@ -1,6 +1,5 @@
 var express = require('express')
   , passport = require('passport')
-  , util = require('util')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
 var FACEBOOK_APP_ID = "--insert-facebook-app-id-here--"
