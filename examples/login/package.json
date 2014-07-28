@@ -5,6 +5,9 @@
     "express": "3.x",
     "ejs": ">= 0.0.0",
     "passport": ">= 0.0.0",
-    "passport-facebook": ">= 0.0.0"
+    "passport-facebook": ">= 0.0.0",
+	"express-session": "1.7.1",
+	"body-parser": "1.5.2",
+	"method-override": "2.1.2"
   }
 }

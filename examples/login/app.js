@@ -48,24 +48,28 @@ passport.use(new FacebookStrategy({
 
 
 
+var session = require("express-session");
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 var app = express();
 
+
 // configure Express
-app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
+app.set('env', 'test');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.logger());
+app.use(express.cookieParser());
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(session({secret: 'keyboard cat'}));
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(app.router);
+app.use(express.static(__dirname + '/public'));
+
 
 
 app.get('/', function(req, res){
