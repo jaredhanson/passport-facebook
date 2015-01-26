@@ -8,8 +8,8 @@ var express = require('express')
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override');
 
-var FACEBOOK_APP_ID = "--insert-facebook-app-id-here--"
-var FACEBOOK_APP_SECRET = "--insert-facebook-app-secret-here--";
+var FACEBOOK_APP_ID = "746913342088510"
+var FACEBOOK_APP_SECRET = "ad539732cbfbd60169f32336e257b37c";
 
 
 // Passport session setup.
@@ -35,7 +35,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "http://local.foobar3000.com:4080/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -88,7 +88,7 @@ app.get('/login', function(req, res){
 //   redirecting the user to facebook.com.  After authorization, Facebook will
 //   redirect the user back to this application at /auth/facebook/callback
 app.get('/auth/facebook',
-  passport.authenticate('facebook'),
+  passport.authenticate('facebook', { scope: ['public_profile'] }),
   function(req, res){
     // The request will be redirected to Facebook for authentication, so this
     // function will not be called.
@@ -110,7 +110,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.listen(3000);
+app.listen(4080);
 
 
 // Simple route middleware to ensure user is authenticated.

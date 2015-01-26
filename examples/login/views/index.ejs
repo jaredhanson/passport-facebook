@@ -1,5 +1,7 @@
 <% if (!user) { %>
 	<h2>Welcome! Please log in.</h2>
+  <p><a class="btn" href="/login">Login</a></p>
 <% } else { %>
-	<h2>Hello, <%= user.username %>.</h2>
+	<h2>Hello</h2>
+  <pre><code><%- JSON.stringify(user, null, "  ") %></code></pre>
 <% } %>
