@@ -1,4 +1,5 @@
 var express = require('express')
+  , expressLayouts = require('express-ejs-layouts')
   , passport = require('passport')
   , util = require('util')
   , FacebookStrategy = require('passport-facebook').Strategy
@@ -58,7 +59,9 @@ var app = express();
 // configure Express
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.use(logger());
+  app.set('layout', 'layout');
+  app.use(expressLayouts);
+  //app.use(logger());
   app.use(cookieParser());
   app.use(bodyParser());
   app.use(methodOverride());
