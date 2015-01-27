@@ -1,16 +1,15 @@
 var express = require('express')
   , expressLayouts = require('express-ejs-layouts')
   , passport = require('passport')
-  , util = require('util')
   , FacebookStrategy = require('passport-facebook').Strategy
-  , logger = require('morgan')
+  //, logger = require('morgan')
   , session = require('express-session')
-  , bodyParser = require("body-parser")
-  , cookieParser = require("cookie-parser")
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
   , methodOverride = require('method-override');
 
-var FACEBOOK_APP_ID = "746913342088510"
-var FACEBOOK_APP_SECRET = "ad539732cbfbd60169f32336e257b37c";
+var FACEBOOK_APP_ID = '-- your facebook app id --';
+var FACEBOOK_APP_SECRET = '-- your facebook app secret --';
 
 
 // Passport session setup.
@@ -36,7 +35,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://local.foobar3000.com:4080/auth/facebook/callback"
+    callbackURL: 'http://localhost:3000/'
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -113,7 +112,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.listen(4080);
+app.listen(3000);
 
 
 // Simple route middleware to ensure user is authenticated.
@@ -123,5 +122,5 @@ app.listen(4080);
 //   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/login');
 }
