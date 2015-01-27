@@ -32,10 +32,12 @@ passport.deserializeUser(function(obj, done) {
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, and Facebook
 //   profile), and invoke a callback with a user object.
-passport.use(new FacebookStrategy({
+// The name 'fb-strategy-1' is given arbitrarily (more than one 
+//   FacebookStrategy could exist by giving different names to each)
+passport.use('fb-strategy-1', new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    callbackURL: 'http://local.foobar3000.org:4080/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -90,7 +92,7 @@ app.get('/login', function(req, res){
 //   redirecting the user to facebook.com.  After authorization, Facebook will
 //   redirect the user back to this application at /auth/facebook/callback
 app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['public_profile'] }),
+  passport.authenticate('fb-strategy-1', { scope: ['public_profile'] }),
   function(req, res){
     // The request will be redirected to Facebook for authentication, so this
     // function will not be called.
@@ -102,7 +104,7 @@ app.get('/auth/facebook',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  passport.authenticate('fb-strategy-1', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
@@ -112,7 +114,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.listen(3000);
+app.listen(4080);
 
 
 // Simple route middleware to ensure user is authenticated.
