@@ -11,5 +11,5 @@ npm install
 node ./app.js
 ```
 
-The server will run on port 3000.
-You can visit the demo at <http://localhost:3000/>
+The server will run on port 4080.
+You can visit the demo at <http://localhost:4080/> and <http://local.foobar3000.com:4080/>
