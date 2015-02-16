@@ -36,7 +36,7 @@ describe('Strategy#userProfile', function() {
       expect(profile.provider).to.equal('facebook');
       
       expect(profile.id).to.equal('500308595');
-      expect(profile.username).to.equal('jaredhanson');
+      // expect(profile.username).to.equal('jaredhanson');
       expect(profile.displayName).to.equal('Jared Hanson');
       expect(profile.name.familyName).to.equal('Hanson');
       expect(profile.name.givenName).to.equal('Jared');
