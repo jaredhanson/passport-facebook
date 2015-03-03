@@ -15,7 +15,7 @@ describe('Strategy#userProfile', function() {
   
     // mock
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
+      if (url != 'https://graph.facebook.com/v2.2/me') { return callback(new Error('wrong url argument')); }
       if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
     
       var body = '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}';
@@ -50,7 +50,7 @@ describe('Strategy#userProfile', function() {
   
     // mock
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
+      if (url != 'https://graph.facebook.com/v2.2/me') { return callback(new Error('wrong url argument')); }
       if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
     
       var body = '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}';
@@ -83,7 +83,7 @@ describe('Strategy#userProfile', function() {
   
     // mock
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/me') { return callback(new Error('wrong url argument')); }
+      if (url != 'https://graph.facebook.com/v2.2/me') { return callback(new Error('wrong url argument')); }
       if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
     
       var body = 'Hello, world.';
