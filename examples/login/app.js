@@ -71,7 +71,7 @@ var app = express();
 
 
 app.get('/', function(req, res){
-  res.render('index', { user: req.user });
+  res.render('layout', { user: req.user, body: null });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
