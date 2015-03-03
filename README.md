@@ -71,6 +71,13 @@ checkins:
     app.get('/auth/facebook',
       passport.authenticate('facebook', { scope: ['user_status', 'user_checkins'] }));
 
+#### Re-asking for Declined Permissions
+
+Refer to Facebook's [docs](https://developers.facebook.com/docs/facebook-login/login-flow-for-web#re-asking-declined-permissions)
+
+    app.get('/auth/facebook',
+      passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_status', 'user_checkins'] }));
+
 #### Display Mode
 
 The display mode with which to render the authorization dialog can be set by
@@ -79,6 +86,13 @@ documentation for more information.
 
     app.get('/auth/facebook',
       passport.authenticate('facebook', { display: 'touch' }));
+
+#### Re-authentication
+
+Refer to Facebook's [Re-authentication](https://developers.facebook.com/docs/facebook-login/reauthentication)
+
+    app.get('/auth/facebook',
+      passport.authenticate('facebook', { authType: 'reauthenticate', authNonce: 'foo123' }));
 
 #### Profile Fields
 
