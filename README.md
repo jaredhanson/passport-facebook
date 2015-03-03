@@ -1,10 +1,11 @@
 # passport-facebook
 
-[![Build](https://travis-ci.org/jaredhanson/passport-facebook.png)](https://travis-ci.org/jaredhanson/passport-facebook)
-[![Coverage](https://coveralls.io/repos/jaredhanson/passport-facebook/badge.png)](https://coveralls.io/r/jaredhanson/passport-facebook)
-[![Quality](https://codeclimate.com/github/jaredhanson/passport-facebook.png)](https://codeclimate.com/github/jaredhanson/passport-facebook)
-[![Dependencies](https://david-dm.org/jaredhanson/passport-facebook.png)](https://david-dm.org/jaredhanson/passport-facebook)
-[![Tips](http://img.shields.io/gittip/jaredhanson.png)](https://www.gittip.com/jaredhanson/)
+[![Build](https://travis-ci.org/jaredhanson/passport-facebook.svg?branch=master)](https://travis-ci.org/jaredhanson/passport-facebook)
+[![Coverage](https://coveralls.io/repos/jaredhanson/passport-facebook/badge.svg?branch=master)](https://coveralls.io/r/jaredhanson/passport-facebook)
+[![Quality](https://codeclimate.com/github/jaredhanson/passport-facebook/badges/gpa.svg)](https://codeclimate.com/github/jaredhanson/passport-facebook)
+[![Dependencies](https://david-dm.org/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
+[![Tips](https://img.shields.io/gratipay/jaredhanson.svg)](https://gratipay.com/jaredhanson/)
+
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Facebook](http://www.facebook.com/)
 using the OAuth 2.0 API.
@@ -130,4 +131,4 @@ this issue.
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2014 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
