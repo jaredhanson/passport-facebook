@@ -53,7 +53,11 @@ passport.use(new FacebookStrategy({
 
 
 
+var session = require("express-session");
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 var app = express();
+
 
 // configure Express
   app.set('views', __dirname + '/views');
