@@ -8,7 +8,7 @@ var express = require('express')
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override');
 
-var FACEBOOK_APP_ID = "--insert-facebook-app-id-here--"
+var FACEBOOK_APP_ID = "--insert-facebook-app-id-here--";
 var FACEBOOK_APP_SECRET = "--insert-facebook-app-secret-here--";
 
 
