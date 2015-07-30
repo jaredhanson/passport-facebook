@@ -28,7 +28,7 @@ describe('Strategy', function() {
     });
 
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/v2.2/dialog/oauth?display=mobile&response_type=code&redirect_uri=&client_id=ABC123');
+      expect(url).to.equal('https://www.facebook.com/v2.4/dialog/oauth?display=mobile&response_type=code&redirect_uri=&client_id=ABC123');
     });
   });
 
@@ -47,7 +47,7 @@ describe('Strategy', function() {
     });
 
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/v2.2/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&redirect_uri=&client_id=ABC123');
+      expect(url).to.equal('https://www.facebook.com/v2.4/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&redirect_uri=&client_id=ABC123');
     });
   });
 
