@@ -69,14 +69,14 @@ For example, this authorization requests permission to the user's statuses and
 checkins:
 
     app.get('/auth/facebook',
-      passport.authenticate('facebook', { scope: ['user_status', 'user_checkins'] }));
+      passport.authenticate('facebook', { scope: ['user_friends', 'user_checkins'] }));
 
 #### Re-asking for Declined Permissions
 
 Refer to Facebook's [docs](https://developers.facebook.com/docs/facebook-login/login-flow-for-web#re-asking-declined-permissions)
 
     app.get('/auth/facebook',
-      passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_status', 'user_checkins'] }));
+      passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'user_checkins'] }));
 
 #### Display Mode
 
