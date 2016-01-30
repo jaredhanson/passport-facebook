@@ -6,6 +6,7 @@ node_js:
   - "iojs"
 
 before_install:
+- "npm update"
  - "npm install istanbul -g"
  - "npm install coveralls -g"
 
