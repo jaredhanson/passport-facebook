@@ -116,7 +116,9 @@ Add `email` to _profileFields_ if you need user's email.
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
+Developers using the popular [Express](http://expressjs.com/) web framework can
+refer to an [example](https://github.com/passport/express-4.x-facebook-example)
+as a starting point for their own web applications.
 
 ## Issues
 
@@ -129,22 +131,45 @@ this issue.
 [1]: https://developers.facebook.com/bugs/196125357123225
 [2]: https://github.com/jaredhanson/passport-facebook/issues/12#issuecomment-5913711
 
-## Related Modules
 
-- [passport-facebook-canvas](https://github.com/missinglink/passport-facebook-canvas) — authentication for apps on Facebook Canvas
-- [passport-facebook-token](https://github.com/drudge/passport-facebook-token) — authenticate tokens issued to devices (iOS, Android, etc.)
+## Contributing
 
-## Tests
+#### Tests
 
-    $ npm install
-    $ npm test
+The test suite is located in the `test/` directory.  All new features are
+expected to have corresponding test cases.  Ensure that the complete test suite
+passes by executing:
 
-## Credits
+```bash
+$ make test
+```
 
-  - [Jared Hanson](http://github.com/jaredhanson)
+#### Coverage
+
+All new feature development is expected to have test coverage.  Patches that
+increse test coverage are happily accepted.  Coverage reports can be viewed by
+executing:
+
+```bash
+$ make test-cov
+$ make view-cov
+```
+
+## Support
+
+#### Funding
+
+This software is provided to you as open source, free of charge.  The time and
+effort to develop and maintain this project is dedicated by [@jaredhanson](https://github.com/jaredhanson).
+If you (or your employer) benefit from this project, please consider a financial
+contribution.  Your contribution helps continue the efforts that produce this
+and other open source software.
+
+Funds are accepted via [PayPal](https://paypal.me/jaredhanson), [Venmo](https://venmo.com/jaredhanson),
+and [other](http://jaredhanson.net/pay) methods.  Any amount is appreciated.
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2016 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
