@@ -104,13 +104,15 @@ strategy like this.
 
     passport.use(new FacebookStrategy({
         // clientID, clientSecret and callbackURL
-        profileFields: ['id', 'displayName', 'photos']
+        profileFields: ['id', 'displayName', 'photos', 'email']
       },
       // verify callback
     ));
 
 If `profileFields` is not specified, the default fields supplied by Facebook
 will be parsed.
+
+Add `email` to _profileFields_ if you need user's email.
 
 ## Examples
 
