@@ -22,12 +22,7 @@
   "bugs": {
     "url": "http://github.com/jaredhanson/passport-facebook/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ],
+  "license": "MIT",
   "main": "./lib",
   "dependencies": {
     "passport-oauth2": "1.x.x"
