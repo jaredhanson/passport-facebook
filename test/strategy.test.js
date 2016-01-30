@@ -7,17 +7,33 @@ var chai = require('chai')
 
 describe('Strategy', function() {
     
-  var strategy = new FacebookStrategy({
-      clientID: 'ABC123',
-      clientSecret: 'secret'
-    },
-    function() {});
+  describe('constructed', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      },
+      function() {});
     
-  it('should be named facebook', function() {
-    expect(strategy.name).to.equal('facebook');
-  });
+    it('should be named facebook', function() {
+      expect(strategy.name).to.equal('facebook');
+    });
+  })
   
-  describe('handling a return request in which authorization was denied by user', function() {
+  describe('constructed with undefined options', function() {
+    it('should throw', function() {
+      expect(function() {
+        var strategy = new FacebookStrategy(undefined, function(){});
+      }).to.throw(Error);
+    });
+  })
+  
+  describe('failure caused by user denying request', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+    
+    
     var info;
   
     before(function(done) {
@@ -42,7 +58,13 @@ describe('Strategy', function() {
     });
   });
   
-  describe('handling a return request in which authorization has failed with an error', function() {
+  describe('error caused by app being in sandbox mode', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+    
+    
     var err;
   
     before(function(done) {
