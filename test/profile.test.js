@@ -1,19 +1,19 @@
-/* global describe, it, expect, before */
+/* global describe, it, before, expect */
 /* jshint expr: true */
 
-var fs = require('fs')
-  , parse = require('../lib/profile').parse;
+var Profile = require('../lib/profile')
+  , fs = require('fs')
 
 
-describe('profile.parse', function() {
+describe('Profile.parse', function() {
     
-  describe('picture field', function() {
+  describe('profile with picture attribute in orginal format', function() {
     var profile;
     
     before(function(done) {
-      fs.readFile('test/data/picture.json', 'utf8', function(err, data) {
+      fs.readFile('test/fixtures/picture.json', 'utf8', function(err, data) {
         if (err) { return done(err); }
-        profile = parse(data);
+        profile = Profile.parse(data);
         done();
       });
     });
@@ -25,13 +25,13 @@ describe('profile.parse', function() {
     });
   });
   
-  describe('picture field, October 2012 breaking changes', function() {
+  describe('profile with picture attribute in October 2012 breaking changes format', function() {
     var profile;
     
     before(function(done) {
-      fs.readFile('test/data/picture-2012-10.json', 'utf8', function(err, data) {
+      fs.readFile('test/fixtures/picture-2012-10.json', 'utf8', function(err, data) {
         if (err) { return done(err); }
-        profile = parse(data);
+        profile = Profile.parse(data);
         done();
       });
     });
