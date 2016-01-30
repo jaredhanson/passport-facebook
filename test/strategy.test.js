@@ -89,4 +89,74 @@ describe('Strategy', function() {
     });
   });
   
+  describe('error caused by invalid code sent to token endpoint (note: error format does not conform to OAuth 2.0 specification)', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+      
+    strategy._oauth2.getOAuthAccessToken = function(code, options, callback) {
+      return callback({ statusCode: 400, data: '{"error":{"message":"Invalid verification code format.","type":"OAuthException","code":100,"fbtrace_id":"XXxx0XXXxx0"}}' });
+    };
+  
+  
+    var err;
+
+    before(function(done) {
+      chai.passport.use(strategy)
+        .error(function(e) {
+          err = e;
+          done();
+        })
+        .req(function(req) {
+          req.query = {};
+          req.query.code = 'SplxlOBeZQQYbYS6WxSbIA+ALT1';
+        })
+        .authenticate();
+    });
+
+    it('should error', function() {
+      expect(err.constructor.name).to.equal('FacebookTokenError');
+      expect(err.message).to.equal('Invalid verification code format.');
+      expect(err.type).to.equal('OAuthException');
+      expect(err.code).to.equal(100);
+      expect(err.subcode).to.be.undefined;
+      expect(err.traceID).to.equal('XXxx0XXXxx0');
+    });
+  }); // error caused by invalid code sent to token endpoint
+  
+  describe('error caused by invalid code sent to token endpoint (note: error format conforms to OAuth 2.0 specification, though this is not the current behavior of the Facebook implementation)', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+
+    // inject a "mock" oauth2 instance
+    strategy._oauth2.getOAuthAccessToken = function(code, options, callback) {
+      return callback({ statusCode: 400, data: '{"error":"invalid_grant","error_description":"The provided value for the input parameter \'code\' is not valid."} '});
+    };
+  
+  
+    var err;
+
+    before(function(done) {
+      chai.passport.use(strategy)
+        .error(function(e) {
+          err = e;
+          done();
+        })
+        .req(function(req) {
+          req.query = {};
+          req.query.code = 'SplxlOBeZQQYbYS6WxSbIA+ALT1';
+        })
+        .authenticate();
+    });
+
+    it('should error', function() {
+      expect(err.constructor.name).to.equal('TokenError');
+      expect(err.message).to.equal('The provided value for the input parameter \'code\' is not valid.');
+      expect(err.code).to.equal('invalid_grant');
+    });
+  }); // error caused by invalid code sent to token endpoint
+  
 });
