@@ -146,9 +146,8 @@ $ make test
 
 #### Coverage
 
-All new feature development is expected to have test coverage.  Patches that
-increse test coverage are happily accepted.  Coverage reports can be viewed by
-executing:
+The test suite covers 100% of the code base.  All new feature development is
+expected to maintain that level.  Coverage reports can be viewed by executing:
 
 ```bash
 $ make test-cov
