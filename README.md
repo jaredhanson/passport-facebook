@@ -1,10 +1,9 @@
 # passport-facebook
 
-[![Build](https://travis-ci.org/jaredhanson/passport-facebook.svg?branch=master)](https://travis-ci.org/jaredhanson/passport-facebook)
-[![Coverage](https://coveralls.io/repos/jaredhanson/passport-facebook/badge.svg?branch=master)](https://coveralls.io/r/jaredhanson/passport-facebook)
-[![Quality](https://codeclimate.com/github/jaredhanson/passport-facebook/badges/gpa.svg)](https://codeclimate.com/github/jaredhanson/passport-facebook)
-[![Dependencies](https://david-dm.org/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
-[![Tips](https://img.shields.io/gratipay/jaredhanson.svg)](https://gratipay.com/jaredhanson/)
+[![Build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
+[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/r/jaredhanson/passport-facebook)
+[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-facebook.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-facebook)
+[![Dependencies](https://img.shields.io/david/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
 
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Facebook](http://www.facebook.com/)
