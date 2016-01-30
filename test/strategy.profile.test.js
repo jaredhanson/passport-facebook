@@ -1,4 +1,4 @@
-/* global describe, it, expect, before */
+/* global describe, it, before, expect */
 /* jshint expr: true */
 
 var FacebookStrategy = require('../lib/strategy');
@@ -6,22 +6,21 @@ var FacebookStrategy = require('../lib/strategy');
 
 describe('Strategy#userProfile', function() {
     
-  var strategy = new FacebookStrategy({
-      clientID: 'ABC123',
-      clientSecret: 'secret'
-    },
-    function() {});
+  describe('fetched from default endpoint', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
   
-  // mock
-  strategy._oauth2.get = function(url, accessToken, callback) {
-    if (url != 'https://graph.facebook.com/v2.2/me') { return callback(new Error('incorrect url argument')); }
-    if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      if (url != 'https://graph.facebook.com/v2.2/me') { return callback(new Error('incorrect url argument')); }
+      if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
     
-    var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
-    callback(null, body, undefined);
-  };
+      var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
+      callback(null, body, undefined);
+    };
     
-  describe('loading profile', function() {
+    
     var profile;
     
     before(function(done) {
@@ -54,9 +53,19 @@ describe('Strategy#userProfile', function() {
     it('should set json property', function() {
       expect(profile._json).to.be.an('object');
     });
-  });
+  }); // fetched from default endpoint
   
-  describe('encountering an error', function() {
+  describe('internal error', function() {
+    var strategy = new FacebookStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+  
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      return callback(new Error('something went wrong'));
+    }
+    
+    
     var err, profile;
     
     before(function(done) {
@@ -71,11 +80,13 @@ describe('Strategy#userProfile', function() {
       expect(err).to.be.an.instanceOf(Error);
       expect(err.constructor.name).to.equal('InternalOAuthError');
       expect(err.message).to.equal('Failed to fetch user profile');
+      expect(err.oauthError).to.be.an.instanceOf(Error);
+      expect(err.oauthError.message).to.equal('something went wrong');
     });
     
     it('should not load profile', function() {
       expect(profile).to.be.undefined;
     });
-  });
+  }); // internal error
   
 });
