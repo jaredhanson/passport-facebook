@@ -71,24 +71,6 @@ application:
         res.redirect('/');
       });
 
-#### Extended Permissions
-
-If you need extended permissions from the user, the permissions can be requested
-via the `scope` option to `passport.authenticate()`.
-
-For example, this authorization requests permission to the user's statuses and
-checkins:
-
-    app.get('/auth/facebook',
-      passport.authenticate('facebook', { scope: ['user_friends', 'user_checkins'] }));
-
-#### Re-asking for Declined Permissions
-
-Refer to Facebook's [docs](https://developers.facebook.com/docs/facebook-login/login-flow-for-web#re-asking-declined-permissions)
-
-    app.get('/auth/facebook',
-      passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'user_checkins'] }));
-
 #### Display Mode
 
 The display mode with which to render the authorization dialog can be set by
@@ -132,6 +114,31 @@ refer to an [example](https://github.com/passport/express-4.x-facebook-example)
 as a starting point for their own web applications.
 
 ## FAQ
+
+##### How do I ask a user for additional permissions?
+
+If you need additional permissions from the user, the permissions can be
+requested via the `scope` option to `passport.authenticate()`.
+
+```js
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: ['user_friends', 'manage_pages'] }));
+```
+
+Refer to [permissions with Facebook Login](https://developers.facebook.com/docs/facebook-login/permissions/overview)
+for further details.
+
+##### How do I re-ask for for declined permissions?
+
+Set the `authType` option to `rerequest` when authenticating.
+
+```js
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages'] }));
+```
+
+Refer to [re-asking for declined permissions](https://developers.facebook.com/docs/facebook-login/web#re-asking-declined-permissions)
+for further details.
 
 ##### How do I include app secret proof in API requests?
 
