@@ -43,8 +43,7 @@ complete authentication.
     passport.use(new FacebookStrategy({
         clientID: FACEBOOK_APP_ID,
         clientSecret: FACEBOOK_APP_SECRET,
-        callbackURL: "http://localhost:3000/auth/facebook/callback",
-        enableProof: false
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
       },
       function(accessToken, refreshToken, profile, cb) {
         User.findOrCreate({ facebookId: profile.id }, function (err, user) {
@@ -70,42 +69,6 @@ application:
         // Successful authentication, redirect home.
         res.redirect('/');
       });
-
-#### Display Mode
-
-The display mode with which to render the authorization dialog can be set by
-specifying the `display` option.  Refer to Facebook's [OAuth Dialog](https://developers.facebook.com/docs/reference/dialogs/oauth/)
-documentation for more information.
-
-    app.get('/auth/facebook',
-      passport.authenticate('facebook', { display: 'touch' }));
-
-#### Re-authentication
-
-Refer to Facebook's [Re-authentication](https://developers.facebook.com/docs/facebook-login/reauthentication)
-
-    app.get('/auth/facebook',
-      passport.authenticate('facebook', { authType: 'reauthenticate', authNonce: 'foo123' }));
-
-#### Profile Fields
-
-The Facebook profile is very rich, and may contain a lot of information.  The
-strategy can be configured with a `profileFields` parameter which specifies a
-list of fields (named by Portable Contacts convention) your application needs.
-For example, to fetch only user's facebook ID, name, and picture, configure
-strategy like this.
-
-    passport.use(new FacebookStrategy({
-        // clientID, clientSecret and callbackURL
-        profileFields: ['id', 'displayName', 'photos', 'email']
-      },
-      // verify callback
-    ));
-
-If `profileFields` is not specified, the default fields supplied by Facebook
-will be parsed.
-
-Add `email` to _profileFields_ if you need user's email.
 
 ## Examples
 
@@ -139,6 +102,24 @@ app.get('/auth/facebook',
 
 Refer to [re-asking for declined permissions](https://developers.facebook.com/docs/facebook-login/web#re-asking-declined-permissions)
 for further details.
+
+##### How do I obtain a user profile with specific fields?
+
+The Facebook profile contains a lot of information about a user.  By default,
+not all the fields in a profile are returned.  The fields need by an application
+can be indicated by setting the `profileFields` option.
+
+```
+new FacebookStrategy({
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  profileFields: ['id', 'displayName', 'photos', 'email']
+}), ...)
+```
+
+Refer to the [User](https://developers.facebook.com/docs/graph-api/reference/v2.5/user)
+section of the Graph API Reference for the complete set of available fields.
 
 ##### How do I include app secret proof in API requests?
 
