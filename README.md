@@ -109,7 +109,7 @@ The Facebook profile contains a lot of information about a user.  By default,
 not all the fields in a profile are returned.  The fields need by an application
 can be indicated by setting the `profileFields` option.
 
-```
+```js
 new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
