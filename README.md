@@ -21,12 +21,24 @@ unobtrusively integrated into any application or framework that supports
 
 ## Usage
 
+#### Create an Application
+
+Before using `passport-facebook`, you must register an application with
+Facebook.  If you have not already done so, a new application can be created at
+[Facebook Developers](https://developers.facebook.com/).  Your application will
+be issued an app ID and app secret, which need to be provided to the strategy.
+You will also need to configure a redirect URI which matches the route in your
+application.
+
 #### Configure Strategy
 
 The Facebook authentication strategy authenticates users using a Facebook
-account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
-accepts these credentials and calls `done` providing a user, as well as
-`options` specifying an app ID, app secret, callback URL, and optionally enabling [`appsecret_proof`] (https://developers.facebook.com/docs/graph-api/securing-requests#appsecret_proof).
+account and OAuth 2.0 tokens.  The app ID and secret obtained when creating an
+application are supplied as options when creating the strategy.  The strategy
+also requires a `verify` callback, which receives the access token and optional
+refresh token, as well as `profile` which contains the authenticated user's
+Facebook profile.  The `verify` callback must call `cb` providing a user to
+complete authentication.
 
     passport.use(new FacebookStrategy({
         clientID: FACEBOOK_APP_ID,
@@ -34,9 +46,9 @@ accepts these credentials and calls `done` providing a user, as well as
         callbackURL: "http://localhost:3000/auth/facebook/callback",
         enableProof: false
       },
-      function(accessToken, refreshToken, profile, done) {
+      function(accessToken, refreshToken, profile, cb) {
         User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-          return done(err, user);
+          return cb(err, user);
         });
       }
     ));
@@ -118,6 +130,26 @@ Add `email` to _profileFields_ if you need user's email.
 Developers using the popular [Express](http://expressjs.com/) web framework can
 refer to an [example](https://github.com/passport/express-4.x-facebook-example)
 as a starting point for their own web applications.
+
+## FAQ
+
+##### How do I include app secret proof in API requests?
+
+Set the `enableProof` option when creating the strategy.
+
+```js
+new FacebookStrategy({
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  enableProof: true
+}, ...)
+```
+
+As detailed in [securing graph API requests](https://developers.facebook.com/docs/graph-api/securing-requests#appsecret_proof),
+requiring the app secret for server API requests helps prevent use of tokens
+stolen by malicous software or man in the middle attacks.
+
 
 ## Issues
 
