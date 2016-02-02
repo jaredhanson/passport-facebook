@@ -138,17 +138,16 @@ As detailed in [securing graph API requests](https://developers.facebook.com/doc
 requiring the app secret for server API requests helps prevent use of tokens
 stolen by malicous software or man in the middle attacks.
 
+##### Why is #_=_ appended to the redirect URI?
 
-## Issues
+This behavior is "by design" according to Facebook's response to a [bug](https://developers.facebook.com/bugs/318390728250352)
+filed regarding this issue.
 
-Facebook's OAuth 2.0 implementation has a [bug][1] in which the fragment `#_=_`
-is appended to the callback URL.  This appears to affect Firefox and Chrome, but
-not Safari.  This fragment can be removed via client-side JavaScript, and [@niftylettuce](https://github.com/niftylettuce)
-provides a suggested [workaround][2].  Developers are encouraged to direct their
-complaints to Facebook in an effort to get them to implement a proper fix for
-this issue.
-[1]: https://developers.facebook.com/bugs/196125357123225
-[2]: https://github.com/jaredhanson/passport-facebook/issues/12#issuecomment-5913711
+Fragment identifiers are not supplied in requests made to a server, and as such
+this strategy is not aware that this behavior is exhibited and is not affected
+by it.  If desired, this fragment can be removed on the client side.  Refer to
+this [discussion](http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url) on
+Stack Overflow for recommendations on how to accomplish such removal.
 
 
 ## Contributing
