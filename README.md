@@ -138,7 +138,7 @@ As detailed in [securing graph API requests](https://developers.facebook.com/doc
 requiring the app secret for server API requests helps prevent use of tokens
 stolen by malicous software or man in the middle attacks.
 
-##### Why is #_=_ appended to the redirect URI?
+##### Why is #\_=\_ appended to the redirect URI?
 
 This behavior is "by design" according to Facebook's response to a [bug](https://developers.facebook.com/bugs/318390728250352)
 filed regarding this issue.
