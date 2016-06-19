@@ -42,4 +42,20 @@ describe('Profile.parse', function() {
     });
   });
   
+  describe('profile with friends attribute', function() {
+    var profile;
+
+    before(function(done) {
+      fs.readFile('test/fixtures/friends.json', 'utf8', function(err, data) {
+        if (err) { return done(err); }
+        profile = Profile.parse(data);
+        done();
+      });
+    });
+
+    it('should parse profile', function() {
+      expect(profile.friends).to.have.length(1);
+      expect(profile.friends[0].value).to.equal({'name': 'John Doe', 'id': '500308596'});
+    });
+  });
 });
