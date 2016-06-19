@@ -2,8 +2,8 @@
     "id": "500308595",
     "friends": {
         "data": [{
-            'id': 500308596,
-            'name': 'John Doe'
+            "id": 500308596,
+            "name": "John Doe"
         }]
     }
 }
