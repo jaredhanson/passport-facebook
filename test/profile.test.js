@@ -54,7 +54,6 @@ describe('Profile.parse', function() {
     });
 
     it('should parse profile', function() {
-      expect(profile.friends).to.have.length(1);
       expect(profile.friends[0].value).to.equal([{"id": "500308596", "name": "John Doe"}]);
     });
   });
