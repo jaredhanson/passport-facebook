@@ -122,7 +122,7 @@ new FacebookStrategy({
 }), ...)
 ```
 
-Refer to the [User](https://developers.facebook.com/docs/graph-api/reference/v2.5/user)
+Refer to the [User](https://developers.facebook.com/docs/graph-api/reference/v2.6/user)
 section of the Graph API Reference for the complete set of available fields.
 
 ##### How do I include app secret proof in API requests?
