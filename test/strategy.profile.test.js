@@ -4,6 +4,31 @@
 var FacebookStrategy = require('../lib/strategy');
 
 
+describe('Strategy#nullableFields', function () {
+
+  describe("Check main object prototype", function () {
+    var strategy = new FacebookStrategy({
+      clientID: 'ABC123',
+      clientSecret: 'secret'
+    }, function() {});
+    it("should contain a nullableFields function", function () {
+      expect(strategy.nullableFields).to.be.an('function');
+    });
+
+    it("should return an original response profile object if an error occurs", function () {
+      expect(strategy.nullableFields(null, {"prop": "test"})).to.haveOwnProperty("prop");
+    });
+
+    it("should return a merged object containing the returned profile and the requested fields with null value if not present in response", function () {
+      expect(strategy.nullableFields("id,name,favorite_athletes", {"id": "123", "name": "daniel"})).to.deep.equal({"id": "123", "name": "daniel", "favorite_athletes": null});
+    });
+
+    it("should exclude empty incoming parameters", function () {
+      expect(strategy.nullableFields("id,name,favorite_athletes, ", {"id": "123", "name": "daniel"})).to.deep.equal({"id": "123", "name": "daniel", "favorite_athletes": null});
+    });
+  })
+});
+
 describe('Strategy#userProfile', function() {
     
   describe('fetched from default endpoint', function() {
@@ -13,7 +38,7 @@ describe('Strategy#userProfile', function() {
       }, function() {});
   
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/v2.5/me') { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/v2.8/me') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
     
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
@@ -63,7 +88,7 @@ describe('Strategy#userProfile', function() {
       }, function() {});
   
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/v2.5/me?appsecret_proof=e941110e3d2bfe82621f0e3e1434730d7305d106c5f68c87165d0b27a4611a4a') { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/v2.8/me?appsecret_proof=e941110e3d2bfe82621f0e3e1434730d7305d106c5f68c87165d0b27a4611a4a') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
     
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
@@ -96,7 +121,7 @@ describe('Strategy#userProfile', function() {
       }, function() {});
   
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/v2.5/me?fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture') { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/v2.8/me?fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
     
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
@@ -130,7 +155,7 @@ describe('Strategy#userProfile', function() {
       }, function() {});
   
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/v2.5/me?appsecret_proof=e941110e3d2bfe82621f0e3e1434730d7305d106c5f68c87165d0b27a4611a4a&fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture') { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/v2.8/me?appsecret_proof=e941110e3d2bfe82621f0e3e1434730d7305d106c5f68c87165d0b27a4611a4a&fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
     
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
@@ -163,13 +188,12 @@ describe('Strategy#userProfile', function() {
       }, function() {});
 
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/v2.5/me?fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture,public_key,updated_time') { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/v2.8/me?fields=id,username,name,last_name,first_name,middle_name,gender,link,email,picture,public_key,updated_time') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
 
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com", "updated_time": "2013-11-02T18:33:09+0000"}';
       callback(null, body, undefined);
-    }
-
+    };
 
     var profile;
 
@@ -200,7 +224,7 @@ describe('Strategy#userProfile', function() {
       }, function() {});
   
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://graph.facebook.com/v2.5/me') { return callback(new Error('incorrect url argument')); }
+      if (url != 'https://graph.facebook.com/v2.8/me') { return callback(new Error('incorrect url argument')); }
       if (accessToken != 'token') { return callback(new Error('incorrect token argument')); }
     
       var body = '{"id":"500308595","name":"Jared Hanson","first_name":"Jared","last_name":"Hanson","link":"http:\\/\\/www.facebook.com\\/jaredhanson","username":"jaredhanson","gender":"male","email":"jaredhanson\\u0040example.com"}';
