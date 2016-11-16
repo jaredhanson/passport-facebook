@@ -44,7 +44,7 @@ complete authentication.
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/callback/facebook"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
@@ -63,10 +63,11 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
 ```js
+// Note: It is important that this route pattern is not a prefix of any future route patterns.
 app.get('/auth/facebook',
   passport.authenticate('facebook'));
 
-app.get('/auth/facebook/callback',
+app.get('/auth/callback/facebook',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
@@ -117,7 +118,7 @@ can be indicated by setting the `profileFields` option.
 new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  callbackURL: "http://localhost:3000/auth/callback/facebook",
   profileFields: ['id', 'displayName', 'photos', 'email']
 }), ...)
 ```
@@ -133,7 +134,7 @@ Set the `enableProof` option when creating the strategy.
 new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  callbackURL: "http://localhost:3000/auth/callback/facebook",
   enableProof: true
 }, ...)
 ```
