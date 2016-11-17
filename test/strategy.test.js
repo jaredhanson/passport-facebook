@@ -17,7 +17,7 @@ describe('Strategy', function() {
     it('should be named facebook', function() {
       expect(strategy.name).to.equal('facebook');
     });
-  })
+  });
   
   describe('constructed with undefined options', function() {
     it('should throw', function() {
@@ -25,7 +25,7 @@ describe('Strategy', function() {
         var strategy = new FacebookStrategy(undefined, function(){});
       }).to.throw(Error);
     });
-  })
+  });
 
   describe('authorization request with display parameter', function() {
     var strategy = new FacebookStrategy({
