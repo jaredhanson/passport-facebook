@@ -6,19 +6,19 @@ var chai = require('chai')
 
 
 describe('Strategy', function() {
-    
+
   describe('constructed', function() {
     var strategy = new FacebookStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       },
       function() {});
-    
+
     it('should be named facebook', function() {
       expect(strategy.name).to.equal('facebook');
     });
   })
-  
+
   describe('constructed with undefined options', function() {
     it('should throw', function() {
       expect(function() {
@@ -32,8 +32,8 @@ describe('Strategy', function() {
         clientID: 'ABC123',
         clientSecret: 'secret'
       }, function() {});
-    
-    
+
+
     var url;
 
     before(function(done) {
@@ -48,17 +48,17 @@ describe('Strategy', function() {
     });
 
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/dialog/oauth?display=mobile&response_type=code&client_id=ABC123');
+      expect(url).to.equal('https://www.facebook.com/v2.8/dialog/oauth?display=mobile&response_type=code&client_id=ABC123');
     });
   });
-  
+
   describe('authorization request with reauthorization parameters', function() {
     var strategy = new FacebookStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       }, function() {});
-    
-    
+
+
     var url;
 
     before(function(done) {
@@ -73,19 +73,19 @@ describe('Strategy', function() {
     });
 
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&client_id=ABC123');
+      expect(url).to.equal('https://www.facebook.com/v2.8/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&client_id=ABC123');
     });
   });
-  
+
   describe('failure caused by user denying request', function() {
     var strategy = new FacebookStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       }, function() {});
-    
-    
+
+
     var info;
-  
+
     before(function(done) {
       chai.passport.use(strategy)
         .fail(function(i) {
@@ -101,22 +101,22 @@ describe('Strategy', function() {
         })
         .authenticate();
     });
-  
+
     it('should fail with info', function() {
       expect(info).to.not.be.undefined;
       expect(info.message).to.equal('Permissions error');
     });
   });
-  
+
   describe('error caused by app being in sandbox mode', function() {
     var strategy = new FacebookStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       }, function() {});
-    
-    
+
+
     var err;
-  
+
     before(function(done) {
       chai.passport.use(strategy)
         .error(function(e) {
@@ -130,7 +130,7 @@ describe('Strategy', function() {
         })
         .authenticate();
     });
-  
+
     it('should error', function() {
       expect(err.constructor.name).to.equal('FacebookAuthorizationError');
       expect(err.message).to.equal('This app is in sandbox mode.  Edit the app configuration at http://developers.facebook.com/apps to make the app publicly visible.');
@@ -138,18 +138,18 @@ describe('Strategy', function() {
       expect(err.status).to.equal(500);
     });
   });
-  
+
   describe('error caused by invalid code sent to token endpoint (note: error format does not conform to OAuth 2.0 specification)', function() {
     var strategy = new FacebookStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       }, function() {});
-      
+
     strategy._oauth2.getOAuthAccessToken = function(code, options, callback) {
       return callback({ statusCode: 400, data: '{"error":{"message":"Invalid verification code format.","type":"OAuthException","code":100,"fbtrace_id":"XXxx0XXXxx0"}}' });
     };
-  
-  
+
+
     var err;
 
     before(function(done) {
@@ -174,7 +174,7 @@ describe('Strategy', function() {
       expect(err.traceID).to.equal('XXxx0XXXxx0');
     });
   }); // error caused by invalid code sent to token endpoint
-  
+
   describe('error caused by invalid code sent to token endpoint (note: error format conforms to OAuth 2.0 specification, though this is not the current behavior of the Facebook implementation)', function() {
     var strategy = new FacebookStrategy({
         clientID: 'ABC123',
@@ -185,8 +185,8 @@ describe('Strategy', function() {
     strategy._oauth2.getOAuthAccessToken = function(code, options, callback) {
       return callback({ statusCode: 400, data: '{"error":"invalid_grant","error_description":"The provided value for the input parameter \'code\' is not valid."} '});
     };
-  
-  
+
+
     var err;
 
     before(function(done) {
@@ -208,5 +208,5 @@ describe('Strategy', function() {
       expect(err.code).to.equal('invalid_grant');
     });
   }); // error caused by invalid code sent to token endpoint
-  
+
 });
