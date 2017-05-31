@@ -110,7 +110,7 @@ for further details.
 ##### How do I obtain a user profile with specific fields?
 
 The Facebook profile contains a lot of information about a user.  By default,
-not all the fields in a profile are returned.  The fields need by an application
+not all the fields in a profile are returned.  The fields needed by an application
 can be indicated by setting the `profileFields` option.
 
 ```js
