@@ -155,14 +155,14 @@ Stack Overflow for recommendations on how to accomplish such removal.
 
 ##### What version of the graph API does this use?
 
-By default, all calls are made to **v2.8** of the graph API. You can modify this by setting the `graphApiVersion` option when creating the strategy.
+By default, all calls are made to **v2.10** of the graph API. You can modify this by setting the `graphApiVersion` option when creating the strategy.
 
 ```js
 new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
   callbackURL: "http://localhost:3000/auth/facebook/callback",
-  graphApiVersion: 'v2.6'
+  graphApiVersion: 'v2.10'
 }, ...)
 ```
 
