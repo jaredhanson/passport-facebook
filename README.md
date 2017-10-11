@@ -74,6 +74,36 @@ app.get('/auth/facebook/callback',
   });
 ```
 
+
+#### Authenticate Requests with additional custom query data
+
+Use `passport.authenticate()`, specifying the `'facebook'` strategy, to
+authenticate requests.
+
+
+```js
+app.get('/auth/facebook',
+  passport.authenticate('facebook', ));
+
+app.get('/auth/facebook', (req, res, next) => {
+    const { custom } = req.query;
+    passport.authenticate('facebook', {
+      callbackURL: `${config.facebook.callbackURL}?custom=${custom}`,
+    })(req, res, next);
+  });
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // req.query.custom => additional data(some token for example)
+    // req.query.code => facebook code(secret data, don't send to client)
+    // req.user => facebook user(sended from FacebookStrategy `return cb(err, user);` )
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+```
+
+
 ## Examples
 
 Developers using the popular [Express](http://expressjs.com/) web framework can
