@@ -2,8 +2,8 @@
 /* jshint expr: true */
 
 var chai = require('chai')
-  , FacebookStrategy = require('../lib/strategy');
-
+  , FacebookStrategy = require('../lib/strategy')
+  , graphApiVersion = FacebookStrategy.defaultGraphApiVersion;
 
 describe('Strategy', function() {
 
@@ -48,7 +48,7 @@ describe('Strategy', function() {
     });
 
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/v2.10/dialog/oauth?display=mobile&response_type=code&client_id=ABC123');
+      expect(url).to.equal('https://www.facebook.com/' + graphApiVersion + '/dialog/oauth?display=mobile&response_type=code&client_id=ABC123');
     });
   });
 
@@ -73,7 +73,7 @@ describe('Strategy', function() {
     });
 
     it('should be redirected', function() {
-      expect(url).to.equal('https://www.facebook.com/v2.10/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&client_id=ABC123');
+      expect(url).to.equal('https://www.facebook.com/' + graphApiVersion + '/dialog/oauth?auth_type=reauthenticate&auth_nonce=foo123&response_type=code&client_id=ABC123');
     });
   });
 
