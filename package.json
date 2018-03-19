@@ -1,6 +1,6 @@
 {
-  "name": "passport-facebook",
-  "version": "2.1.1",
+  "name": "passport-facebook-rwky",
+  "version": "2.2.0",
   "description": "Facebook authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -11,16 +11,21 @@
     "identity"
   ],
   "author": {
-    "name": "Jared Hanson",
-    "email": "jaredhanson@gmail.com",
-    "url": "http://www.jaredhanson.net/"
+    "name": "Rowan Wookey",
+    "email": "admin@rwky.net",
+    "url": "https://www.rwky.net/"
   },
+  "contributors": [{
+      "name": "Jared Hanson",
+      "email": "jaredhanson@gmail.com",
+      "url": "http://www.jaredhanson.net/"
+  }],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jaredhanson/passport-facebook.git"
+    "url": "git://github.com/rwky/passport-facebook.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/passport-facebook/issues"
+    "url": "http://github.com/rwky/passport-facebook/issues"
   },
   "license": "MIT",
   "licenses": [
@@ -40,7 +45,7 @@
     "chai-passport-strategy": "1.x.x"
   },
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 4.0.0"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"
