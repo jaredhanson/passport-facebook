@@ -40,8 +40,8 @@
   },
   "devDependencies": {
     "make-node": "0.3.x",
-    "mocha": "1.x.x",
-    "chai": "2.x.x",
+    "mocha": "5.x.x",
+    "chai": "4.x.x",
     "chai-passport-strategy": "1.x.x"
   },
   "engines": {
