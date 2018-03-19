@@ -1,9 +1,9 @@
 # passport-facebook
 
-[![Build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
-[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/r/jaredhanson/passport-facebook)
-[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-facebook.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-facebook)
-[![Dependencies](https://img.shields.io/david/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
+[![Build](https://img.shields.io/travis/rwky/passport-facebook.svg)](https://travis-ci.org/rwky/passport-facebook)
+[![Coverage](https://img.shields.io/coveralls/rwky/passport-facebook.svg)](https://coveralls.io/r/rwky/passport-facebook)
+[![Quality](https://img.shields.io/codeclimate/github/rwky/passport-facebook.svg?label=quality)](https://codeclimate.com/github/rwky/passport-facebook)
+[![Dependencies](https://img.shields.io/david/rwky/passport-facebook.svg)](https://david-dm.org/rwky/passport-facebook)
 
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Facebook](http://www.facebook.com/)
