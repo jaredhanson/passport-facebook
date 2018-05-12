@@ -97,11 +97,11 @@ for further details.
 
 ##### How do I re-ask for for declined permissions?
 
-Set the `authType` option to `rerequest` when authenticating.
+Set the `authType` option to `reauthenticate` when authenticating.
 
 ```js
 app.get('/auth/facebook',
-  passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages'] }));
+  passport.authenticate('facebook', { authType: 'reauthenticate', scope: ['user_friends', 'manage_pages'] }));
 ```
 
 Refer to [re-asking for declined permissions](https://developers.facebook.com/docs/facebook-login/web#re-asking-declined-permissions)
