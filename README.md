@@ -82,8 +82,6 @@ authenticate requests.
 
 
 ```js
-app.get('/auth/facebook',
-  passport.authenticate('facebook', ));
 
 app.get('/auth/facebook', (req, res, next) => {
     const { custom } = req.query;
