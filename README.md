@@ -1,11 +1,5 @@
 # passport-facebook
 
-[![Build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
-[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/r/jaredhanson/passport-facebook)
-[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-facebook.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-facebook)
-[![Dependencies](https://img.shields.io/david/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
-
-
 [Passport](http://passportjs.org/) strategy for authenticating with [Facebook](http://www.facebook.com/)
 using the OAuth 2.0 API.
 
@@ -14,6 +8,19 @@ By plugging into Passport, Facebook authentication can be easily and
 unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
+
+---
+
+<p align="center"><a href="http://www.tkqlhce.com/click-8907558-13433666" target="_top">1Password, the only password manager you should trust.</a> Industry-leading security and award winning design.</p>
+
+---
+
+Status:
+[![Build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
+[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/r/jaredhanson/passport-facebook)
+[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-facebook.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-facebook)
+[![Dependencies](https://img.shields.io/david/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
+
 
 ## Install
 
@@ -153,46 +160,15 @@ by it.  If desired, this fragment can be removed on the client side.  Refer to
 this [discussion](http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url) on
 Stack Overflow for recommendations on how to accomplish such removal.
 
+## Sponsorship
 
-## Contributing
-
-#### Tests
-
-The test suite is located in the `test/` directory.  All new features are
-expected to have corresponding test cases.  Ensure that the complete test suite
-passes by executing:
-
-```bash
-$ make test
-```
-
-#### Coverage
-
-The test suite covers 100% of the code base.  All new feature development is
-expected to maintain that level.  Coverage reports can be viewed by executing:
-
-```bash
-$ make test-cov
-$ make view-cov
-```
-
-## Support
-
-#### Funding
-
-This software is provided to you as open source, free of charge.  The time and
-effort to develop and maintain this project is dedicated by [@jaredhanson](https://github.com/jaredhanson).
-If you (or your employer) benefit from this project, please consider a financial
-contribution.  Your contribution helps continue the efforts that produce this
-and other open source software.
-
-Funds are accepted via [PayPal](https://paypal.me/jaredhanson), [Venmo](https://venmo.com/jaredhanson),
-and [other](http://jaredhanson.net/pay) methods.  Any amount is appreciated.
+Passport is open source software.  Ongoing development is made possible by
+generous contributions from [individuals and corporations](https://github.com/jaredhanson/passport/blob/master/SPONSORS.md).
+To learn more about how you can help keep this project financially sustainable,
+please visit Jared Hanson's page on [Patreon](https://www.patreon.com/jaredhanson).
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2011-2016 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/vK9dyjRnnWsMzzJTQ57fRJpH/jaredhanson/passport-facebook'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/vK9dyjRnnWsMzzJTQ57fRJpH/jaredhanson/passport-facebook.svg' /></a>
