@@ -15,12 +15,10 @@ unobtrusively integrated into any application or framework that supports
 
 ---
 
-Status:
-[![Build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
-[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/r/jaredhanson/passport-facebook)
-[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-facebook.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-facebook)
-[![Dependencies](https://img.shields.io/david/jaredhanson/passport-facebook.svg)](https://david-dm.org/jaredhanson/passport-facebook)
-
+[![npm](https://img.shields.io/npm/v/passport-facebook.svg)](https://www.npmjs.com/package/passport-facebook)
+[![build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
+[![coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/github/jaredhanson/passport-facebook)
+[...](https://github.com/jaredhanson/passport-facebook/wiki/Status)
 
 ## Install
 
