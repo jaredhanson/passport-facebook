@@ -34,8 +34,8 @@
     "passport-oauth2": "1.x.x"
   },
   "devDependencies": {
-    "make-node": "0.3.x",
-    "mocha": "1.x.x",
+    "make-node": "0.4.6",
+    "mocha": "2.x.x",
     "chai": "2.x.x",
     "chai-passport-strategy": "1.x.x"
   },
@@ -43,6 +43,6 @@
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"
+    "test": "make test"
   }
 }
