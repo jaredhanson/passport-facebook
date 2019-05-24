@@ -158,13 +158,6 @@ by it.  If desired, this fragment can be removed on the client side.  Refer to
 this [discussion](http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url) on
 Stack Overflow for recommendations on how to accomplish such removal.
 
-## Sponsorship
-
-Passport is open source software.  Ongoing development is made possible by
-generous contributions from [individuals and corporations](https://github.com/jaredhanson/passport/blob/master/SPONSORS.md).
-To learn more about how you can help keep this project financially sustainable,
-please visit Jared Hanson's page on [Patreon](https://www.patreon.com/jaredhanson).
-
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
