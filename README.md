@@ -127,6 +127,7 @@ new FacebookStrategy({
 }), ...)
 ```
 
+
 Refer to the [User](https://developers.facebook.com/docs/graph-api/reference/v2.5/user)
 section of the Graph API Reference for the complete set of available fields.
 
