@@ -100,7 +100,7 @@ app.get('/auth/facebook',
 Refer to [permissions with Facebook Login](https://developers.facebook.com/docs/facebook-login/permissions/overview)
 for further details.
 
-##### How do I re-ask for for declined permissions?
+##### How do I re-ask for declined permissions?
 
 Set the `authType` option to `reauthenticate` when authenticating.
 
