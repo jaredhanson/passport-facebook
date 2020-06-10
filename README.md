@@ -11,7 +11,11 @@ unobtrusively integrated into any application or framework that supports
 
 ---
 
-<p align="center"><a href="http://www.tkqlhce.com/click-8907558-13433666" target="_top">1Password, the only password manager you should trust.</a> Industry-leading security and award winning design.</p>
+<p align="center">
+  <sup>Advertisement</sup>
+  <br>
+  <a href="https://click.linksynergy.com/link?id=D*o7yui4/NM&offerid=507388.922484&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fthe-complete-nodejs-developer-course-2%2F&u1=1zlZ1AkoVQjosKoeCqb9osAgjkpQyUiZEQGmEc4SfB4OV">The Complete Node.js Developer Course</a><br>Learn Node. js by building real-world applications with Node, Express, MongoDB, Jest, and more!
+</p>
 
 ---
 
