@@ -50,6 +50,7 @@ Facebook profile.  The `verify` callback must call `cb` providing a user to
 complete authentication.
 
 ```js
+const FacebookStrategy = require("passport-facebook").Strategy;
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
