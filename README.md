@@ -85,9 +85,10 @@ app.get('/auth/facebook/callback',
 
 ## Examples
 
-Developers using the popular [Express](http://expressjs.com/) web framework can
-refer to an [example](https://github.com/passport/express-4.x-facebook-example)
-as a starting point for their own web applications.
+* [express-4.x-facebook-example](https://github.com/passport/express-4.x-facebook-example)
+
+  Illustrates how to use the Facebook strategy within an [Express](https://expressjs.com)
+  application.
 
 ## FAQ
 
