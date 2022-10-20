@@ -9,8 +9,12 @@ integrated into any application or framework that supports
 [Connect](https://github.com/senchalabs/connect#readme)-style middleware,
 including [Express](https://expressjs.com/).
 
+<div align="center">
+
 :seedling: [Tutorial](https://www.passportjs.org/tutorials/facebook/) •
 :brain: [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/)
+
+</div>
 
 ---
 
