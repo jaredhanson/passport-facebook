@@ -1,20 +1,20 @@
 # passport-facebook
 
+<div align="center">
+
 [Passport](https://www.passportjs.org/) strategy for authenticating with [Facebook](https://www.facebook.com/)
 using [OAuth 2.0](https://www.passportjs.org/packages/passport-oauth2/).
 
-<div align="center">
+This module lets you authenticate using Facebook in your Node.js applications.
+By plugging into Passport, Facebook Login can be easily and unobtrusively
+integrated into any application or framework that supports
+[Connect](https://github.com/senchalabs/connect#readme)-style middleware,
+including [Express](https://expressjs.com/).
 
 [Tutorial](https://www.passportjs.org/tutorials/facebook/) •
 [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/)
 
 </div>
-
-This module lets you authenticate using Facebook in your Node.js applications.
-By plugging into Passport, Facebook authentication can be easily and
-unobtrusively integrated into any application or framework that supports
-[Connect](http://www.senchalabs.org/connect/)-style middleware, including
-[Express](http://expressjs.com/).
 
 ---
 
