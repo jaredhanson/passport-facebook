@@ -7,6 +7,8 @@
 
 </div>
 
+#
+
 [Passport](https://www.passportjs.org/) strategy for authenticating with [Facebook](https://www.facebook.com/)
 using [OAuth 2.0](https://www.passportjs.org/packages/passport-oauth2/).
 
