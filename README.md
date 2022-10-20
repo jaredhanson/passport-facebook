@@ -10,7 +10,7 @@ integrated into any application or framework that supports
 including [Express](https://expressjs.com/).
 
 :seedling: [Tutorial](https://www.passportjs.org/tutorials/facebook/) •
-[Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/)
+:brain: [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/)
 
 ---
 
