@@ -10,8 +10,10 @@ unobtrusively integrated into any application or framework that supports
 [Express](http://expressjs.com/).
 
 <div align="center">
+
 [Tutorial](https://www.passportjs.org/tutorials/facebook/) •
 [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/) •
+
 <div>
 
 ---
