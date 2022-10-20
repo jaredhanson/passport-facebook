@@ -5,9 +5,9 @@
 [Tutorial](https://www.passportjs.org/tutorials/facebook/) •
 [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/)
 
-</div>
+<hr style="border:2px solid gray">
 
-#
+</div>
 
 [Passport](https://www.passportjs.org/) strategy for authenticating with [Facebook](https://www.facebook.com/)
 using [OAuth 2.0](https://www.passportjs.org/packages/passport-oauth2/).
