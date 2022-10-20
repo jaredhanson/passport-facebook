@@ -26,11 +26,6 @@ including [Express](https://expressjs.com/).
 
 ---
 
-[![npm](https://img.shields.io/npm/v/passport-facebook.svg)](https://www.npmjs.com/package/passport-facebook)
-[![build](https://img.shields.io/travis/jaredhanson/passport-facebook.svg)](https://travis-ci.org/jaredhanson/passport-facebook)
-[![coverage](https://img.shields.io/coveralls/jaredhanson/passport-facebook.svg)](https://coveralls.io/github/jaredhanson/passport-facebook)
-[...](https://github.com/jaredhanson/passport-facebook/wiki/Status)
-
 ## Install
 
     $ npm install passport-facebook
