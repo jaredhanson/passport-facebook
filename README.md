@@ -11,8 +11,9 @@ including [Express](https://expressjs.com/).
 
 <div align="center">
 
-:seedling: [Tutorial](https://www.passportjs.org/tutorials/facebook/) •
-:brain: [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/)
+:seedling: [Tutorial](https://www.passportjs.org/tutorials/facebook/?utm_source=github&utm_medium=referral&utm_campaign=passport-facebook&utm_content=nav-tutorial) •
+:brain: [Understanding OAuth 2.0](https://www.passportjs.org/concepts/oauth2/?utm_source=github&utm_medium=referral&utm_campaign=passport-facebook&utm_content=nav-concept) •
+:heart: [Sponsors](https://www.passportjs.org/sponsors/?utm_source=github&utm_medium=referral&utm_campaign=passport-facebook&utm_content=nav-sponsors)
 
 </div>
 
