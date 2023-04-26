@@ -17,6 +17,10 @@ including [Express](https://expressjs.com/).
 
 </div>
 
+<p align="right">
+  <sup>Developed by <a href="#authors">Jared Hanson</a>.</sub>
+</p>
+
 ---
 
 <p align="center">
@@ -26,10 +30,6 @@ including [Express](https://expressjs.com/).
 </p>
 
 ---
-
-<p align="right">
-  <sup>Developed by <a href="#authors">Jared Hanson</a>.</sub>
-</p>
 
 ## Install
 
