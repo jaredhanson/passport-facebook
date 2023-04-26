@@ -9,6 +9,10 @@ integrated into any application or framework that supports
 [Connect](https://github.com/senchalabs/connect#readme)-style middleware,
 including [Express](https://expressjs.com/).
 
+<p align="right">
+  <sup>Developed by <a href="#authors">Jared Hanson</a>.</sub>
+</p>
+
 <div align="center">
 
 :seedling: [Tutorial](https://www.passportjs.org/tutorials/facebook/?utm_source=github&utm_medium=referral&utm_campaign=passport-facebook&utm_content=nav-tutorial) •
