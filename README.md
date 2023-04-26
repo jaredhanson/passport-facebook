@@ -166,8 +166,12 @@ by it.  If desired, this fragment can be removed on the client side.  Refer to
 this [discussion](http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url) on
 Stack Overflow for recommendations on how to accomplish such removal.
 
+## Authors
+
+- [Jared Hanson](https://www.jaredhanson.me/) { [![WWW](https://raw.githubusercontent.com/jaredhanson/jaredhanson/master/images/globe-12x12.svg)](https://www.jaredhanson.me/) [![Facebook](https://raw.githubusercontent.com/jaredhanson/jaredhanson/master/images/facebook-12x12.svg)](https://www.facebook.com/jaredhanson) [![LinkedIn](https://raw.githubusercontent.com/jaredhanson/jaredhanson/master/images/linkedin-12x12.svg)](https://www.linkedin.com/in/jaredhanson) [![Twitter](https://raw.githubusercontent.com/jaredhanson/jaredhanson/master/images/twitter-12x12.svg)](https://twitter.com/jaredhanson) [![GitHub](https://raw.githubusercontent.com/jaredhanson/jaredhanson/master/images/github-12x12.svg)](https://github.com/jaredhanson) }
+
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2016 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2023 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
