@@ -178,4 +178,4 @@ Stack Overflow for recommendations on how to accomplish such removal.
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2023 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2023 Jared Hanson
