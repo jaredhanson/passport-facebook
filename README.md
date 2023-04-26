@@ -1,7 +1,7 @@
 # passport-facebook
 
 [Passport](https://www.passportjs.org/) strategy for authenticating with [Facebook](https://www.facebook.com/)
-using [OAuth 2.0](https://www.passportjs.org/packages/passport-oauth2/).
+using [OAuth 2.0](https://www.passportjs.org/features/oauth2/).
 
 This module lets you authenticate using Facebook in your Node.js applications.
 By plugging into Passport, Facebook Login can be easily and unobtrusively
