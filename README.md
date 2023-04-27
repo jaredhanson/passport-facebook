@@ -37,14 +37,14 @@ including [Express](https://expressjs.com/).
 
 ## Usage
 
-#### Create an Application
+#### Register Application
 
-Before using `passport-facebook`, you must register an application with
-Facebook.  If you have not already done so, a new application can be created at
-[Facebook Developers](https://developers.facebook.com/).  Your application will
-be issued an app ID and app secret, which need to be provided to the strategy.
-You will also need to configure a redirect URI which matches the route in your
-application.
+The Facebook strategy authenticates users using their Facebook account.  Before
+your application can make use of Facebook's authentication system, you must
+first [register](https://developers.facebook.com/docs/development/create-an-app)
+your app.  Once registered, an app ID and secret will be issued which are used
+by Facebook to identify your app.  You will also need to configure a redirect
+URI which matches the route in your application.
 
 #### Configure Strategy
 
