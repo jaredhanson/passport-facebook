@@ -92,10 +92,11 @@ app.get('/auth/facebook/callback',
 
 ## Examples
 
-* [express-4.x-facebook-example](https://github.com/passport/express-4.x-facebook-example)
+* [todos-express-facebook](https://github.com/passport/todos-express-facebook)
 
-  Illustrates how to use the Facebook strategy within an [Express](https://expressjs.com)
-  application.
+  Illustrates how to use the Facebook strategy within an Express application.  For
+  developers new to Passport and getting started, a [tutorial](https://www.passportjs.org/tutorials/facebook/)
+  is available.
 
 ## FAQ
 
