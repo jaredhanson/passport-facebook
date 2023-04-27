@@ -17,17 +17,17 @@ including [Express](https://expressjs.com/).
 
 </div>
 
-<p align="right">
+<div align="right">
   <sup>Developed by <a href="#authors">Jared Hanson</a>.</sub>
-</p>
+</div>
 
 ---
 
-<p align="center">
+<div align="center">
   <sup>Advertisement</sup>
   <br>
   <a href="https://click.linksynergy.com/link?id=D*o7yui4/NM&offerid=507388.922484&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fthe-complete-nodejs-developer-course-2%2F&u1=1zlZ1AkoVQjosKoeCqb9osAgjkpQyUiZEQGmEc4SfB4OV">The Complete Node.js Developer Course</a><br>Learn Node. js by building real-world applications with Node, Express, MongoDB, Jest, and more!
-</p>
+</div>
 
 ---
 
