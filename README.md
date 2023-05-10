@@ -48,23 +48,76 @@ URI which matches the route in your application.
 
 #### Configure Strategy
 
-The Facebook authentication strategy authenticates users using a Facebook
-account and OAuth 2.0 tokens.  The app ID and secret obtained when creating an
-application are supplied as options when creating the strategy.  The strategy
-also requires a `verify` callback, which receives the access token and optional
-refresh token, as well as `profile` which contains the authenticated user's
-Facebook profile.  The `verify` callback must call `cb` providing a user to
-complete authentication.
+Once you've [registered your application](#register-application), the strategy
+needs to be configured with your application's app ID and secret, along with
+its OAuth 2.0 redirect endpoint.
 
-```js
+The strategy takes a `verify` function as an argument, which accepts
+`accessToken`, `refreshToken`, and `profile` as arguments.  `accessToken` and
+`refreshToken` are used for API access, and are not needed for authentication.
+`profile` contains the user's [profile information](https://www.passportjs.org/reference/normalized-profile/)
+stored in their Facebook account.  When authenticating a user, this strategy
+uses the OAuth 2.0 protocol to obtain this information via a sequence of
+redirects and API requests to Facebook.
+
+The `verify` function is responsible for determining the user to which the
+Facebook account belongs.  In cases where the account is logging in for the
+first time, a new user record is typically created automatically.  On subsequent
+logins, the existing user record will be found via its relation to the Facebook
+account.
+
+Because the `verify` function is supplied by the application, the app is free to
+use any database of its choosing.  The example below illustrates usage of a SQL
+database.
+
+```javascript
+var FacebookStrategy = require('passport-facebook');
+
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    clientID: process.env['FACEBOOK_APP_ID'],
+    clientSecret: process.env['FACEBOOK_APP_SECRET'],
+    callbackURL: 'https://www.example.com/oauth2/redirect/facebook',
+    state: true
   },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
+  function verify(accessToken, refreshToken, profile, cb) {
+    db.get('SELECT * FROM federated_credentials WHERE provider = ? AND subject = ?', [
+      'https://www.facebook.com',
+      profile.id
+    ], function(err, cred) {
+      if (err) { return cb(err); }
+      
+      if (!cred) {
+        // The account at Facebook has not logged in to this app before.  Create
+        // a new user record and associate it with the Facebook account.
+        db.run('INSERT INTO users (name) VALUES (?)', [
+          profile.displayName
+        ], function(err) {
+          if (err) { return cb(err); }
+          
+          var id = this.lastID;
+          db.run('INSERT INTO federated_credentials (user_id, provider, subject) VALUES (?, ?, ?)', [
+            id,
+            'https://www.facebook.com',
+            profile.id
+          ], function(err) {
+            if (err) { return cb(err); }
+            
+            var user = {
+              id: id,
+              name: profile.displayName
+            };
+            return cb(null, user);
+          });
+        });
+      } else {
+        // The account at Facebook has previously logged in to the app.  Get the
+        // user record associated with the Facebook account and log the user in.
+        db.get('SELECT * FROM users WHERE id = ?', [ cred.user_id ], function(err, user) {
+          if (err) { return cb(err); }
+          if (!user) { return cb(null, false); }
+          return cb(null, user);
+        });
+      }
     });
   }
 ));
