@@ -123,22 +123,23 @@ passport.use(new FacebookStrategy({
 ));
 ```
 
-#### Authenticate Requests
+#### Define Routes
 
-Use `passport.authenticate()`, specifying the `'facebook'` strategy, to
-authenticate requests.
-
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
+Two routes are needed in order to allow users to log in with their Facebook
+account.  The first route redirects the user to the Facebook, where they will
+authenticate:
 
 ```js
-app.get('/auth/facebook',
-  passport.authenticate('facebook'));
+app.get('/login/facebook', passport.authenticate('facebook'));
+```
 
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+The second route processes the authentication response and logs the user in,
+after Facebook redirects the user back to the app:
+
+```js
+app.get('/oauth2/redirect/facebook',
+  passport.authenticate('facebook', { failureRedirect: '/login', failureMessage: true }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/');
   });
 ```
