@@ -154,6 +154,11 @@ app.get('/oauth2/redirect/facebook',
   developers new to Passport and getting started, a [tutorial](https://www.passportjs.org/tutorials/facebook/)
   is available.
 
+* [todos-express-facebook-popup](https://github.com/passport/todos-express-facebook-popup)
+
+  Illustrates how to use the Facebook strategy within an Express application, with
+  the authorization prompt being displayed in a popup window.
+
 ## FAQ
 
 ##### How do I ask a user for additional permissions?
