@@ -33,7 +33,9 @@ including [Express](https://expressjs.com/).
 
 ## Install
 
-    $ npm install passport-facebook
+```sh
+$ npm install passport-facebook
+```
 
 ## Usage
 
@@ -70,7 +72,7 @@ Because the `verify` function is supplied by the application, the app is free to
 use any database of its choosing.  The example below illustrates usage of a SQL
 database.
 
-```javascript
+```js
 var FacebookStrategy = require('passport-facebook');
 
 passport.use(new FacebookStrategy({
