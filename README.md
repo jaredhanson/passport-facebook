@@ -156,8 +156,9 @@ app.get('/oauth2/redirect/facebook',
 
 * [todos-express-facebook-popup](https://github.com/passport/todos-express-facebook-popup)
 
-  Illustrates how to use the Facebook strategy within an Express application, with
-  the authorization prompt being displayed in a popup window.
+  Illustrates how to use progressive enhancement to display the the Facebook
+  login dialog in a popup window.  State is kept during the OAuth 2.0 flow and
+  used to close the window for requests using that display mode.
 
 ## FAQ
 
