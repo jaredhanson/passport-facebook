@@ -165,11 +165,13 @@ app.get('/oauth2/redirect/facebook',
 ##### How do I ask a user for additional permissions?
 
 If you need additional permissions from the user, the permissions can be
-requested via the `scope` option to `passport.authenticate()`.
+requested via the `scope` option to the Strategy.
 
 ```js
 app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['user_friends', 'manage_pages'] }));
+passport.use(new FacebookStrategy({
+    scope: ['user_photos'],
+    (...)
 ```
 
 Refer to [permissions with Facebook Login](https://developers.facebook.com/docs/facebook-login/permissions/overview)
